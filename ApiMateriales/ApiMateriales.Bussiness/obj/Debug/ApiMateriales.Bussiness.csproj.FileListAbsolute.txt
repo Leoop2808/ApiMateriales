@@ -1,0 +1,5 @@
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.Bussiness\bin\Debug\ApiMateriales.Bussiness.dll
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.Bussiness\bin\Debug\ApiMateriales.Bussiness.pdb
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.Bussiness\obj\Debug\ApiMateriales.Bussiness.csproj.CoreCompileInputs.cache
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.Bussiness\obj\Debug\ApiMateriales.Bussiness.dll
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.Bussiness\obj\Debug\ApiMateriales.Bussiness.pdb

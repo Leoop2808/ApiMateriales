@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MATERIALESDBModelStoreContainer" CdmEntityContainer="MATERIALESDBEntities">
+    <EntitySetMapping Name="trs_persona">
+      <EntityTypeMapping TypeName="MATERIALESDBModel.trs_persona">
+        <MappingFragment StoreEntitySet="trs_persona">
+          <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+          <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+          <ScalarProperty Name="nombre2" ColumnName="nombre2" />
+          <ScalarProperty Name="apellido_materno" ColumnName="apellido_materno" />
+          <ScalarProperty Name="apellido_paterno" ColumnName="apellido_paterno" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="eliminado" ColumnName="eliminado" />
+          <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+          <ScalarProperty Name="fecha_actualizacion" ColumnName="fecha_actualizacion" />
+          <ScalarProperty Name="fecha_eliminacion" ColumnName="fecha_eliminacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trs_usuario">
+      <EntityTypeMapping TypeName="MATERIALESDBModel.trs_usuario">
+        <MappingFragment StoreEntitySet="trs_usuario">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+          <ScalarProperty Name="cod_usuario" ColumnName="cod_usuario" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="eliminado" ColumnName="eliminado" />
+          <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+          <ScalarProperty Name="fecha_actualizacion" ColumnName="fecha_actualizacion" />
+          <ScalarProperty Name="fecha_eliminacion" ColumnName="fecha_eliminacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

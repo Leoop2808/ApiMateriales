@@ -1,0 +1,13 @@
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.DataAccess\bin\Debug\ApiMateriales.DataAccess.dll.config
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.DataAccess\bin\Debug\ApiMateriales.DataAccess.dll
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.DataAccess\bin\Debug\ApiMateriales.DataAccess.pdb
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.DataAccess\bin\Debug\EntityFramework.dll
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.DataAccess\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.DataAccess\bin\Debug\EntityFramework.xml
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.DataAccess\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.DataAccess\obj\Debug\ApiMateriales.DataAccess.csproj.CoreCompileInputs.cache
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.DataAccess\obj\Debug\ApiMateriales.DataAccess.csproj.CopyComplete
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.DataAccess\obj\Debug\ApiMateriales.DataAccess.dll
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.DataAccess\obj\Debug\ApiMateriales.DataAccess.pdb

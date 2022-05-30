@@ -1,0 +1,5 @@
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.Entities\bin\Debug\ApiMateriales.Entities.dll
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.Entities\bin\Debug\ApiMateriales.Entities.pdb
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.Entities\obj\Debug\ApiMateriales.Entities.csproj.CoreCompileInputs.cache
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.Entities\obj\Debug\ApiMateriales.Entities.dll
+D:\SW2Materiales\01_ApiMateriales\ApiMateriales\ApiMateriales.Entities\obj\Debug\ApiMateriales.Entities.pdb

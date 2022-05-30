@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MATERIALESDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="trs_persona">
+          <Key>
+            <PropertyRef Name="id_persona" />
+          </Key>
+          <Property Name="id_persona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre1" Type="varchar" MaxLength="60" />
+          <Property Name="nombre2" Type="varchar" MaxLength="60" />
+          <Property Name="apellido_materno" Type="varchar" MaxLength="60" />
+          <Property Name="apellido_paterno" Type="varchar" MaxLength="60" />
+          <Property Name="correo" Type="varchar" MaxLength="200" />
+          <Property Name="activo" Type="bit" />
+          <Property Name="eliminado" Type="bit" />
+          <Property Name="fecha_registro" Type="datetime" />
+          <Property Name="fecha_actualizacion" Type="datetime" />
+          <Property Name="fecha_eliminacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="trs_usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_persona" Type="int" />
+          <Property Name="cod_usuario" Type="varchar" MaxLength="20" />
+          <Property Name="username" Type="varchar" MaxLength="250" />
+          <Property Name="password" Type="varchar" MaxLength="500" />
+          <Property Name="activo" Type="bit" />
+          <Property Name="eliminado" Type="bit" />
+          <Property Name="fecha_registro" Type="datetime" />
+          <Property Name="fecha_actualizacion" Type="datetime" />
+          <Property Name="fecha_eliminacion" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_USUARIO_PERSONA">
+          <End Role="trs_persona" Type="Self.trs_persona" Multiplicity="0..1" />
+          <End Role="trs_usuario" Type="Self.trs_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trs_persona">
+              <PropertyRef Name="id_persona" />
+            </Principal>
+            <Dependent Role="trs_usuario">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MATERIALESDBModelStoreContainer">
+          <EntitySet Name="trs_persona" EntityType="Self.trs_persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="trs_usuario" EntityType="Self.trs_usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_USUARIO_PERSONA" Association="Self.FK_USUARIO_PERSONA">
+            <End Role="trs_persona" EntitySet="trs_persona" />
+            <End Role="trs_usuario" EntitySet="trs_usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MATERIALESDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="trs_persona">
+          <Key>
+            <PropertyRef Name="id_persona" />
+          </Key>
+          <Property Name="id_persona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="nombre2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="apellido_materno" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="apellido_paterno" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+          <Property Name="eliminado" Type="Boolean" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="3" />
+          <Property Name="fecha_actualizacion" Type="DateTime" Precision="3" />
+          <Property Name="fecha_eliminacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="trs_usuario" Relationship="Self.FK_USUARIO_PERSONA" FromRole="trs_persona" ToRole="trs_usuario" />
+        </EntityType>
+        <EntityType Name="trs_usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_persona" Type="Int32" />
+          <Property Name="cod_usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+          <Property Name="eliminado" Type="Boolean" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="3" />
+          <Property Name="fecha_actualizacion" Type="DateTime" Precision="3" />
+          <Property Name="fecha_eliminacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="trs_persona" Relationship="Self.FK_USUARIO_PERSONA" FromRole="trs_usuario" ToRole="trs_persona" />
+        </EntityType>
+        <Association Name="FK_USUARIO_PERSONA">
+          <End Role="trs_persona" Type="Self.trs_persona" Multiplicity="0..1" />
+          <End Role="trs_usuario" Type="Self.trs_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trs_persona">
+              <PropertyRef Name="id_persona" />
+            </Principal>
+            <Dependent Role="trs_usuario">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MATERIALESDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="trs_persona" EntityType="Self.trs_persona" />
+          <EntitySet Name="trs_usuario" EntityType="Self.trs_usuario" />
+          <AssociationSet Name="FK_USUARIO_PERSONA" Association="Self.FK_USUARIO_PERSONA">
+            <End Role="trs_persona" EntitySet="trs_persona" />
+            <End Role="trs_usuario" EntitySet="trs_usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MATERIALESDBModelStoreContainer" CdmEntityContainer="MATERIALESDBEntities">
+          <EntitySetMapping Name="trs_persona">
+            <EntityTypeMapping TypeName="MATERIALESDBModel.trs_persona">
+              <MappingFragment StoreEntitySet="trs_persona">
+                <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+                <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+                <ScalarProperty Name="nombre2" ColumnName="nombre2" />
+                <ScalarProperty Name="apellido_materno" ColumnName="apellido_materno" />
+                <ScalarProperty Name="apellido_paterno" ColumnName="apellido_paterno" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="eliminado" ColumnName="eliminado" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="fecha_actualizacion" ColumnName="fecha_actualizacion" />
+                <ScalarProperty Name="fecha_eliminacion" ColumnName="fecha_eliminacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="trs_usuario">
+            <EntityTypeMapping TypeName="MATERIALESDBModel.trs_usuario">
+              <MappingFragment StoreEntitySet="trs_usuario">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+                <ScalarProperty Name="cod_usuario" ColumnName="cod_usuario" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="eliminado" ColumnName="eliminado" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="fecha_actualizacion" ColumnName="fecha_actualizacion" />
+                <ScalarProperty Name="fecha_eliminacion" ColumnName="fecha_eliminacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

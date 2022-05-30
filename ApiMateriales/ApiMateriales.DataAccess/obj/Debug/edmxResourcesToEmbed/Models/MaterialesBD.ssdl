@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MATERIALESDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="trs_persona">
+    <Key>
+      <PropertyRef Name="id_persona" />
+    </Key>
+    <Property Name="id_persona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre1" Type="varchar" MaxLength="60" />
+    <Property Name="nombre2" Type="varchar" MaxLength="60" />
+    <Property Name="apellido_materno" Type="varchar" MaxLength="60" />
+    <Property Name="apellido_paterno" Type="varchar" MaxLength="60" />
+    <Property Name="correo" Type="varchar" MaxLength="200" />
+    <Property Name="activo" Type="bit" />
+    <Property Name="eliminado" Type="bit" />
+    <Property Name="fecha_registro" Type="datetime" />
+    <Property Name="fecha_actualizacion" Type="datetime" />
+    <Property Name="fecha_eliminacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="trs_usuario">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_persona" Type="int" />
+    <Property Name="cod_usuario" Type="varchar" MaxLength="20" />
+    <Property Name="username" Type="varchar" MaxLength="250" />
+    <Property Name="password" Type="varchar" MaxLength="500" />
+    <Property Name="activo" Type="bit" />
+    <Property Name="eliminado" Type="bit" />
+    <Property Name="fecha_registro" Type="datetime" />
+    <Property Name="fecha_actualizacion" Type="datetime" />
+    <Property Name="fecha_eliminacion" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_USUARIO_PERSONA">
+    <End Role="trs_persona" Type="Self.trs_persona" Multiplicity="0..1" />
+    <End Role="trs_usuario" Type="Self.trs_usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trs_persona">
+        <PropertyRef Name="id_persona" />
+      </Principal>
+      <Dependent Role="trs_usuario">
+        <PropertyRef Name="id_persona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MATERIALESDBModelStoreContainer">
+    <EntitySet Name="trs_persona" EntityType="Self.trs_persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trs_usuario" EntityType="Self.trs_usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_USUARIO_PERSONA" Association="Self.FK_USUARIO_PERSONA">
+      <End Role="trs_persona" EntitySet="trs_persona" />
+      <End Role="trs_usuario" EntitySet="trs_usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
