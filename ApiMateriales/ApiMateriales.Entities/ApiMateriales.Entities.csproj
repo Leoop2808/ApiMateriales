@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,6 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contacto\Request\RegistrarProveedorRequest.cs" />
+    <Compile Include="Contacto\Response\ObtenerListaProveedoresResponse.cs" />
+    <Compile Include="Contacto\Response\RegistrarProveedorResponse.cs" />
     <Compile Include="GeneralResponse.cs" />
     <Compile Include="Maestro\Response\ObtenerListaMaestrosResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -48,8 +52,6 @@
   <ItemGroup>
     <Folder Include="Compra\Request\" />
     <Folder Include="Compra\Response\" />
-    <Folder Include="Contacto\Request\" />
-    <Folder Include="Contacto\Response\" />
     <Folder Include="Facturacion\Request\" />
     <Folder Include="Facturacion\Response\" />
     <Folder Include="Maestro\Request\" />

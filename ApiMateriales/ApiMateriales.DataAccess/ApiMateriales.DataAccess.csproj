@@ -98,6 +98,12 @@
     <Compile Include="Models\SP_OBTENER_PRODUCTO_Result.cs">
       <DependentUpon>MaterialesBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SP_OBTENER_PROVEEDORES_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_REGISTRAR_PROVEEDOR_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\trs_persona.cs">
       <DependentUpon>MaterialesBD.tt</DependentUpon>
     </Compile>
