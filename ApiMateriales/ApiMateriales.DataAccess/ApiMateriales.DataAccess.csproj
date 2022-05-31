@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -53,6 +56,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contrato\ICompraDO.cs" />
+    <Compile Include="Contrato\IContactoDO.cs" />
+    <Compile Include="Contrato\IFacturacionDO.cs" />
+    <Compile Include="Contrato\IMaestroDO.cs" />
+    <Compile Include="Contrato\IProduccionDO.cs" />
+    <Compile Include="Contrato\IProductoDO.cs" />
+    <Compile Include="Contrato\IReporteDO.cs" />
+    <Compile Include="Implementacion\CompraDO.cs" />
+    <Compile Include="Implementacion\ContactoDO.cs" />
+    <Compile Include="Implementacion\FacturacionDO.cs" />
+    <Compile Include="Implementacion\MaestroDO.cs" />
+    <Compile Include="Implementacion\ProduccionDO.cs" />
+    <Compile Include="Implementacion\ProductoDO.cs" />
+    <Compile Include="Implementacion\ReporteDO.cs" />
     <Compile Include="Models\MaterialesBD.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -69,6 +86,18 @@
       <DependentUpon>MaterialesBD.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Providers\UsuarioIdentity.cs" />
+    <Compile Include="Models\SP_OBTENER_ESTADOS_PRODUCCION_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OBTENER_PAIS_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OBTENER_PRODUCTO_FINAL_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OBTENER_PRODUCTO_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\trs_persona.cs">
       <DependentUpon>MaterialesBD.tt</DependentUpon>
     </Compile>
@@ -78,8 +107,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Contrato\" />
-    <Folder Include="Implementacion\" />
+    <ProjectReference Include="..\ApiMateriales.Entities\ApiMateriales.Entities.csproj">
+      <Project>{3C917A59-F054-4DC3-81D6-04828A2AF4DB}</Project>
+      <Name>ApiMateriales.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\MaterialesBD.edmx">

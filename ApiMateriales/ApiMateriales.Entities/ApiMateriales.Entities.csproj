@@ -42,7 +42,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeneralResponse.cs" />
+    <Compile Include="Maestro\Response\ObtenerListaMaestrosResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Compra\Request\" />
+    <Folder Include="Compra\Response\" />
+    <Folder Include="Contacto\Request\" />
+    <Folder Include="Contacto\Response\" />
+    <Folder Include="Facturacion\Request\" />
+    <Folder Include="Facturacion\Response\" />
+    <Folder Include="Maestro\Request\" />
+    <Folder Include="Produccion\Request\" />
+    <Folder Include="Produccion\Response\" />
+    <Folder Include="Producto\Request\" />
+    <Folder Include="Producto\Response\" />
+    <Folder Include="Reporte\Request\" />
+    <Folder Include="Reporte\Response\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

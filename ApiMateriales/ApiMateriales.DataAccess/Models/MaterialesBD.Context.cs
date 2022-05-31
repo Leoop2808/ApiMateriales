@@ -12,6 +12,8 @@ namespace ApiMateriales.DataAccess.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class MATERIALESDBEntities : DbContext
     {
@@ -27,5 +29,25 @@ namespace ApiMateriales.DataAccess.Models
     
         public virtual DbSet<trs_persona> trs_persona { get; set; }
         public virtual DbSet<trs_usuario> trs_usuario { get; set; }
+    
+        public virtual ObjectResult<SP_OBTENER_ESTADOS_PRODUCCION_Result> SP_OBTENER_ESTADOS_PRODUCCION()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_ESTADOS_PRODUCCION_Result>("SP_OBTENER_ESTADOS_PRODUCCION");
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_PAIS_Result> SP_OBTENER_PAIS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_PAIS_Result>("SP_OBTENER_PAIS");
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_PRODUCTO_Result> SP_OBTENER_PRODUCTO()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_PRODUCTO_Result>("SP_OBTENER_PRODUCTO");
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_PRODUCTO_FINAL_Result> SP_OBTENER_PRODUCTO_FINAL()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_PRODUCTO_FINAL_Result>("SP_OBTENER_PRODUCTO_FINAL");
+        }
     }
 }

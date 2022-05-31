@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MATERIALESDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MATERIALESDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="trs_persona">
           <Key>
             <PropertyRef Name="id_persona" />
@@ -48,6 +48,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="SP_OBTENER_ESTADOS_PRODUCCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_OBTENER_PAIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_OBTENER_PRODUCTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_OBTENER_PRODUCTO_FINAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="MATERIALESDBModelStoreContainer">
           <EntitySet Name="trs_persona" EntityType="Self.trs_persona" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="trs_usuario" EntityType="Self.trs_usuario" Schema="dbo" store:Type="Tables" />
@@ -56,8 +60,7 @@
             <End Role="trs_usuario" EntitySet="trs_usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MATERIALESDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -113,7 +116,27 @@
             <End Role="trs_persona" EntitySet="trs_persona" />
             <End Role="trs_usuario" EntitySet="trs_usuario" />
           </AssociationSet>
+          <FunctionImport Name="SP_OBTENER_ESTADOS_PRODUCCION" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_ESTADOS_PRODUCCION_Result)" />
+          <FunctionImport Name="SP_OBTENER_PAIS" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_PAIS_Result)" />
+          <FunctionImport Name="SP_OBTENER_PRODUCTO" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_PRODUCTO_Result)" />
+          <FunctionImport Name="SP_OBTENER_PRODUCTO_FINAL" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_PRODUCTO_FINAL_Result)" />
         </EntityContainer>
+        <ComplexType Name="SP_OBTENER_ESTADOS_PRODUCCION_Result">
+          <Property Type="String" Name="codEstadoProduccion" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="siglaEstadoProduccion" Nullable="true" MaxLength="40" />
+        </ComplexType>
+        <ComplexType Name="SP_OBTENER_PAIS_Result">
+          <Property Type="String" Name="codPais" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="siglaPais" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="SP_OBTENER_PRODUCTO_Result">
+          <Property Type="String" Name="codProducto" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="nombreProducto" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="SP_OBTENER_PRODUCTO_FINAL_Result">
+          <Property Type="String" Name="codProductoFinal" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="nombreProductoFinal" Nullable="true" MaxLength="150" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -153,6 +176,38 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_OBTENER_ESTADOS_PRODUCCION" FunctionName="MATERIALESDBModel.Store.SP_OBTENER_ESTADOS_PRODUCCION">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_ESTADOS_PRODUCCION_Result">
+                <ScalarProperty Name="codEstadoProduccion" ColumnName="codEstadoProduccion" />
+                <ScalarProperty Name="siglaEstadoProduccion" ColumnName="siglaEstadoProduccion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_OBTENER_PAIS" FunctionName="MATERIALESDBModel.Store.SP_OBTENER_PAIS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_PAIS_Result">
+                <ScalarProperty Name="codPais" ColumnName="codPais" />
+                <ScalarProperty Name="siglaPais" ColumnName="siglaPais" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_OBTENER_PRODUCTO" FunctionName="MATERIALESDBModel.Store.SP_OBTENER_PRODUCTO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_PRODUCTO_Result">
+                <ScalarProperty Name="codProducto" ColumnName="codProducto" />
+                <ScalarProperty Name="nombreProducto" ColumnName="nombreProducto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_OBTENER_PRODUCTO_FINAL" FunctionName="MATERIALESDBModel.Store.SP_OBTENER_PRODUCTO_FINAL">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_PRODUCTO_FINAL_Result">
+                <ScalarProperty Name="codProductoFinal" ColumnName="codProductoFinal" />
+                <ScalarProperty Name="nombreProductoFinal" ColumnName="nombreProductoFinal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

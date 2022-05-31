@@ -41,11 +41,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contrato\ICompraBO.cs" />
+    <Compile Include="Contrato\IContactoBO.cs" />
+    <Compile Include="Contrato\IFacturacionBO.cs" />
+    <Compile Include="Contrato\IMaestroBO.cs" />
+    <Compile Include="Contrato\IProduccionBO.cs" />
+    <Compile Include="Contrato\IProductoBO.cs" />
+    <Compile Include="Contrato\IReporteBO.cs" />
+    <Compile Include="Implementacion\CompraBO.cs" />
+    <Compile Include="Implementacion\ContactoBO.cs" />
+    <Compile Include="Implementacion\FacturacionBO.cs" />
+    <Compile Include="Implementacion\MaestroBO.cs" />
+    <Compile Include="Implementacion\ProduccionBO.cs" />
+    <Compile Include="Implementacion\ProductoBO.cs" />
+    <Compile Include="Implementacion\ReporteBO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Contrato\" />
-    <Folder Include="Implementacion\" />
+    <ProjectReference Include="..\ApiMateriales.DataAccess\ApiMateriales.DataAccess.csproj">
+      <Project>{63116848-3238-4A48-B91C-33696A9B901D}</Project>
+      <Name>ApiMateriales.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ApiMateriales.Entities\ApiMateriales.Entities.csproj">
+      <Project>{3C917A59-F054-4DC3-81D6-04828A2AF4DB}</Project>
+      <Name>ApiMateriales.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

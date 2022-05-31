@@ -317,7 +317,14 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\CompraController.cs" />
+    <Compile Include="Controllers\ContactoController.cs" />
+    <Compile Include="Controllers\FacturacionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MaestroController.cs" />
+    <Compile Include="Controllers\ProduccionController.cs" />
+    <Compile Include="Controllers\ProductoController.cs" />
+    <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -380,6 +387,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Cliente\" />
+    <Folder Include="Views\Compra\" />
+    <Folder Include="Views\Contacto\" />
+    <Folder Include="Views\Facturacion\" />
+    <Folder Include="Views\Maestro\" />
+    <Folder Include="Views\Produccion\" />
+    <Folder Include="Views\Producto\" />
+    <Folder Include="Views\Proveedor\" />
+    <Folder Include="Views\Reporte\" />
+    <Folder Include="Views\Venta\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -411,9 +428,17 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ApiMateriales.Bussiness\ApiMateriales.Bussiness.csproj">
+      <Project>{D38F07AF-45AA-4B4D-BF3B-FCBB0E2C6C97}</Project>
+      <Name>ApiMateriales.Bussiness</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ApiMateriales.DataAccess\ApiMateriales.DataAccess.csproj">
       <Project>{63116848-3238-4A48-B91C-33696A9B901D}</Project>
       <Name>ApiMateriales.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ApiMateriales.Entities\ApiMateriales.Entities.csproj">
+      <Project>{3C917A59-F054-4DC3-81D6-04828A2AF4DB}</Project>
+      <Name>ApiMateriales.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
