@@ -44,5 +44,36 @@ namespace ApiMateriales.Bussiness.Implementacion
                 };
             }
         }
+
+        public EditarProveedorResponse EditarProveedor(EditarProveedorRequest request, int idProveedor, int id_usuario) 
+        {
+            try
+            {
+                return _contactoDO.EditarProveedor(request, idProveedor, id_usuario);
+            }
+            catch (Exception e)
+            {
+                return new EditarProveedorResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno en la edición de proveedor."
+                };
+            }
+        }
+        public EliminarProveedorResponse EliminarProveedor(int idProveedor, int id_usuario) 
+        {
+            try
+            {
+                return _contactoDO.EliminarProveedor(idProveedor, id_usuario);
+            }
+            catch (Exception e)
+            {
+                return new EliminarProveedorResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno en la eliminación de proveedor."
+                };
+            }
+        }
     }
 }

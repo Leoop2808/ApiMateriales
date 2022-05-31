@@ -86,7 +86,19 @@
       <DependentUpon>MaterialesBD.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Providers\UsuarioIdentity.cs" />
+    <Compile Include="Models\SP_EDITAR_PROVEEDOR_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ELIMINAR_PROVEEDOR_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SP_OBTENER_ESTADOS_PRODUCCION_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OBTENER_MAESTRO_CLIENTE_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OBTENER_MAESTRO_PROVEEDOR_Result.cs">
       <DependentUpon>MaterialesBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_OBTENER_PAIS_Result.cs">

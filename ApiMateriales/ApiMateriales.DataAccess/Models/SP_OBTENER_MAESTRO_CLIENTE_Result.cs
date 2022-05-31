@@ -11,10 +11,9 @@ namespace ApiMateriales.DataAccess.Models
 {
     using System;
     
-    public partial class SP_OBTENER_PRODUCTO_FINAL_Result
+    public partial class SP_OBTENER_MAESTRO_CLIENTE_Result
     {
-        public string codProductoFinal { get; set; }
-        public string nombreProductoFinal { get; set; }
-        public Nullable<int> stock { get; set; }
+        public string ruc { get; set; }
+        public string nombreCliente { get; set; }
     }
 }

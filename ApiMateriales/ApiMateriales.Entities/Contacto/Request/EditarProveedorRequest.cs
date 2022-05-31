@@ -2,8 +2,9 @@
 
 namespace ApiMateriales.Entities.Contacto.Request
 {
-    public class RegistrarProveedorRequest
+    public class EditarProveedorRequest
     {
+
         [Required(AllowEmptyStrings = false, ErrorMessage = "El país es obligatorio.")]
         public string codPais { get; set; }
 

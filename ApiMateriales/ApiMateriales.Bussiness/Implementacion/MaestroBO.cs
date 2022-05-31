@@ -81,6 +81,28 @@ namespace ApiMateriales.Bussiness.Implementacion
             {
                 response.descripcion = dataEstadoProduccion.descripcion;
             }
+
+            var dataCliente = _maestroDO.ObtenerCliente(id_usuario);
+            if (dataCliente != null && dataCliente.codigo == 1)
+            {
+                response.datos.listaCliente = new List<DataCliente>();
+                response.datos.listaCliente = dataCliente.datos;
+            }
+            else
+            {
+                response.descripcion = dataCliente.descripcion;
+            }
+
+            var dataProveedor = _maestroDO.ObtenerProveedor(id_usuario);
+            if (dataProveedor != null && dataProveedor.codigo == 1)
+            {
+                response.datos.listaProveedor = new List<DataProveedor>();
+                response.datos.listaProveedor = dataProveedor.datos;
+            }
+            else
+            {
+                response.descripcion = dataProveedor.descripcion;
+            }
         }
     }
 }

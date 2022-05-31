@@ -42,7 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contacto\Request\EditarProveedorRequest.cs" />
     <Compile Include="Contacto\Request\RegistrarProveedorRequest.cs" />
+    <Compile Include="Contacto\Response\EditarProveedorResponse.cs" />
+    <Compile Include="Contacto\Response\EliminarProveedorResponse.cs" />
     <Compile Include="Contacto\Response\ObtenerListaProveedoresResponse.cs" />
     <Compile Include="Contacto\Response\RegistrarProveedorResponse.cs" />
     <Compile Include="GeneralResponse.cs" />

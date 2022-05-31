@@ -88,5 +88,74 @@ namespace ApiMateriales.DataAccess.Implementacion
                 };
             }
         }
+
+        public EditarProveedorResponse EditarProveedor(EditarProveedorRequest request, int idProveedor, int id_usuario) 
+        {
+            try
+            {
+                var ctx = new MATERIALESDBEntities();
+                var dataRes = ctx.SP_EDITAR_PROVEEDOR(idProveedor, request.codPais, request.nombreProveedor,
+                request.ruc, request.direccion, request.celular, request.correo, request.representante,
+                request.celularRepre, request.correoRepre).FirstOrDefault();
+
+                if (dataRes != null)
+                {
+                    return new EditarProveedorResponse()
+                    {
+                        codigo = dataRes.codigo.GetValueOrDefault(),
+                        descripcion = dataRes.descripcion
+                    };
+                }
+                else
+                {
+                    return new EditarProveedorResponse()
+                    {
+                        codigo = 0,
+                        descripcion = "No se obtuvo respuesta del servicio de editar de proveedor"
+                    };
+                }
+            }
+            catch (Exception)
+            {
+                return new EditarProveedorResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno en el servicio de editar proveedor"
+                };
+            }
+        }
+        public EliminarProveedorResponse EliminarProveedor(int idProveedor, int id_usuario) 
+        {
+            try
+            {
+                var ctx = new MATERIALESDBEntities();
+                var dataRes = ctx.SP_ELIMINAR_PROVEEDOR(idProveedor).FirstOrDefault();
+
+                if (dataRes != null)
+                {
+                    return new EliminarProveedorResponse()
+                    {
+                        codigo = dataRes.codigo.GetValueOrDefault(),
+                        descripcion = dataRes.descripcion
+                    };
+                }
+                else
+                {
+                    return new EliminarProveedorResponse()
+                    {
+                        codigo = 0,
+                        descripcion = "No se obtuvo respuesta del servicio de eliminar de proveedor"
+                    };
+                }
+            }
+            catch (Exception)
+            {
+                return new EliminarProveedorResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno en el servicio de eliminar proveedor"
+                };
+            }
+        }
     }
 }

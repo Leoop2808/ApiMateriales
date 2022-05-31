@@ -174,5 +174,88 @@ namespace ApiMateriales.DataAccess.Implementacion
                 };
             }
         }
+
+        public ObtenerClienteResponse ObtenerCliente(int id_usuario) 
+        {
+            try
+            {
+                var ctx = new MATERIALESDBEntities();
+                var dataRes = ctx.SP_OBTENER_MAESTRO_CLIENTE().ToList();
+                if (dataRes != null && dataRes.Count > 0)
+                {
+                    var config = new MapperConfiguration(cfg => {
+                        cfg.CreateMap<SP_OBTENER_MAESTRO_CLIENTE_Result, DataCliente>();
+                    });
+
+                    IMapper mapper = config.CreateMapper();
+                    var datosMapeados = mapper.Map<List<SP_OBTENER_MAESTRO_CLIENTE_Result>, List<DataCliente>>(dataRes);
+
+                    return new ObtenerClienteResponse()
+                    {
+                        codigo = 1,
+                        descripcion = "Clientes obtenidos correctamente.",
+                        datos = datosMapeados.ToList()
+                    };
+                }
+                else
+                {
+                    return new ObtenerClienteResponse()
+                    {
+                        codigo = 1,
+                        descripcion = "No se obtuvieron datos de clientes.",
+                        datos = new List<DataCliente>()
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                return new ObtenerClienteResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno en el listado de clientes."
+                };
+            }
+        }
+        public ObtenerProveedorResponse ObtenerProveedor(int id_usuario) 
+        {
+            try
+            {
+                var ctx = new MATERIALESDBEntities();
+                var dataRes = ctx.SP_OBTENER_MAESTRO_PROVEEDOR().ToList();
+                if (dataRes != null && dataRes.Count > 0)
+                {
+                    var config = new MapperConfiguration(cfg => {
+                        cfg.CreateMap<SP_OBTENER_MAESTRO_PROVEEDOR_Result, DataProveedor>();
+                    });
+
+                    IMapper mapper = config.CreateMapper();
+                    var datosMapeados = mapper.Map<List<SP_OBTENER_MAESTRO_PROVEEDOR_Result>, List<DataProveedor>>(dataRes);
+
+                    return new ObtenerProveedorResponse()
+                    {
+                        codigo = 1,
+                        descripcion = "Proveedores obtenidos correctamente.",
+                        datos = datosMapeados.ToList()
+                    };
+                }
+                else
+                {
+                    return new ObtenerProveedorResponse()
+                    {
+                        codigo = 1,
+                        descripcion = "No se obtuvieron datos de proveedores.",
+                        datos = new List<DataProveedor>()
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                return new ObtenerProveedorResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno en el listado de proveedores."
+                };
+            }
+        }
     }
 }
