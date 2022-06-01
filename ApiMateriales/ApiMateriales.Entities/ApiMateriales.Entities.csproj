@@ -42,12 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contacto\Request\EditarClienteRequest.cs" />
     <Compile Include="Contacto\Request\EditarProveedorRequest.cs" />
+    <Compile Include="Contacto\Request\RegistrarClienteRequest.cs" />
     <Compile Include="Contacto\Request\RegistrarProveedorRequest.cs" />
+    <Compile Include="Contacto\Response\EditarClienteResponse.cs" />
     <Compile Include="Contacto\Response\EditarProveedorResponse.cs" />
+    <Compile Include="Contacto\Response\EliminarClienteResponse.cs" />
     <Compile Include="Contacto\Response\EliminarProveedorResponse.cs" />
+    <Compile Include="Contacto\Response\ObtenerDetalleClienteResponse.cs" />
+    <Compile Include="Contacto\Response\ObtenerDetalleProveedorResponse.cs" />
+    <Compile Include="Contacto\Response\ObtenerListaClientesResponse.cs" />
     <Compile Include="Contacto\Response\ObtenerListaProveedoresResponse.cs" />
+    <Compile Include="Contacto\Response\RegistrarClienteResponse.cs" />
     <Compile Include="Contacto\Response\RegistrarProveedorResponse.cs" />
+    <Compile Include="Facturacion\Request\RegistrarVentaRequest.cs" />
+    <Compile Include="Facturacion\Response\RegistrarVentaResponse.cs" />
     <Compile Include="GeneralResponse.cs" />
     <Compile Include="Maestro\Response\ObtenerListaMaestrosResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,8 +65,6 @@
   <ItemGroup>
     <Folder Include="Compra\Request\" />
     <Folder Include="Compra\Response\" />
-    <Folder Include="Facturacion\Request\" />
-    <Folder Include="Facturacion\Response\" />
     <Folder Include="Maestro\Request\" />
     <Folder Include="Produccion\Request\" />
     <Folder Include="Produccion\Response\" />

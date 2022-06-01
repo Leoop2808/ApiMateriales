@@ -86,10 +86,25 @@
       <DependentUpon>MaterialesBD.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Providers\UsuarioIdentity.cs" />
+    <Compile Include="Models\SP_EDITAR_CLIENTE_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SP_EDITAR_PROVEEDOR_Result.cs">
       <DependentUpon>MaterialesBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SP_ELIMINAR_CLIENTE_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SP_ELIMINAR_PROVEEDOR_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OBTENER_CLIENTES_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OBTENER_DETALLE_CLIENTE_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OBTENER_DETALLE_PROVEEDOR_Result.cs">
       <DependentUpon>MaterialesBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_OBTENER_ESTADOS_PRODUCCION_Result.cs">
@@ -111,6 +126,9 @@
       <DependentUpon>MaterialesBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_OBTENER_PROVEEDORES_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_REGISTRAR_CLIENTE_Result.cs">
       <DependentUpon>MaterialesBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_REGISTRAR_PROVEEDOR_Result.cs">

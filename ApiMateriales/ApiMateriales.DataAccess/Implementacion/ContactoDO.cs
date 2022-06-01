@@ -37,7 +37,7 @@ namespace ApiMateriales.DataAccess.Implementacion
                 {
                     return new ObtenerListaProveedoresResponse()
                     {
-                        codigo = 1,
+                        codigo = 0,
                         descripcion = "No se obtuvieron datos de proveedores.",
                         datos = new List<DataProveedor>()
                     };
@@ -144,7 +144,7 @@ namespace ApiMateriales.DataAccess.Implementacion
                     return new EliminarProveedorResponse()
                     {
                         codigo = 0,
-                        descripcion = "No se obtuvo respuesta del servicio de eliminar de proveedor"
+                        descripcion = "No se obtuvo respuesta del servicio de eliminar proveedor"
                     };
                 }
             }
@@ -154,6 +154,235 @@ namespace ApiMateriales.DataAccess.Implementacion
                 {
                     codigo = -1,
                     descripcion = "Error interno en el servicio de eliminar proveedor"
+                };
+            }
+        }
+
+        public ObtenerDetalleProveedorResponse ObtenerDetalleProveedor(int idProveedor, int id_usuario) 
+        {
+            try
+            {
+                var ctx = new MATERIALESDBEntities();
+                var dataRes = ctx.SP_OBTENER_DETALLE_PROVEEDOR(idProveedor).FirstOrDefault();
+                if (dataRes != null)
+                {
+                    var config = new MapperConfiguration(cfg => {
+                        cfg.CreateMap<SP_OBTENER_DETALLE_PROVEEDOR_Result, DetalleProveedor>();
+                    });
+
+                    IMapper mapper = config.CreateMapper();
+                    var datosMapeados = mapper.Map<SP_OBTENER_DETALLE_PROVEEDOR_Result, DetalleProveedor>(dataRes);
+
+                    return new ObtenerDetalleProveedorResponse()
+                    {
+                        codigo = 1,
+                        descripcion = "Proveedor obtenido correctamente."
+                    };
+                }
+                else
+                {
+                    return new ObtenerDetalleProveedorResponse()
+                    {
+                        codigo = 0,
+                        descripcion = "No se obtuvieron datos de proveedor.",
+                        datos = new DetalleProveedor()
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                return new ObtenerDetalleProveedorResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno en el detalle de proveedor."
+                };
+            }
+        }
+
+        public ObtenerListaClientesResponse ObtenerListaClientes(int id_usuario)
+        {
+            try
+            {
+                var ctx = new MATERIALESDBEntities();
+                var dataRes = ctx.SP_OBTENER_CLIENTES().ToList();
+                if (dataRes != null && dataRes.Count > 0)
+                {
+                    var config = new MapperConfiguration(cfg => {
+                        cfg.CreateMap<SP_OBTENER_CLIENTES_Result, DataCliente>();
+                    });
+
+                    IMapper mapper = config.CreateMapper();
+                    var datosMapeados = mapper.Map<List<SP_OBTENER_CLIENTES_Result>, List<DataCliente>>(dataRes);
+
+                    return new ObtenerListaClientesResponse()
+                    {
+                        codigo = 1,
+                        descripcion = "Clientes obtenidos correctamente.",
+                        datos = datosMapeados.ToList()
+                    };
+                }
+                else
+                {
+                    return new ObtenerListaClientesResponse()
+                    {
+                        codigo = 0,
+                        descripcion = "No se obtuvieron datos de clientes.",
+                        datos = new List<DataCliente>()
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                return new ObtenerListaClientesResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno en el listado de clientes."
+                };
+            }
+        }
+
+        public RegistrarClienteResponse RegistrarCliente(RegistrarClienteRequest request, int id_usuario)
+        {
+            try
+            {
+                var ctx = new MATERIALESDBEntities();
+                var dataRes = ctx.SP_REGISTRAR_CLIENTE(request.codPais, request.nombreCliente,
+                request.ruc, request.direccion, request.celular, request.correo, request.representante,
+                request.celularRepre, request.correoRepre).FirstOrDefault();
+
+                if (dataRes != null)
+                {
+                    return new RegistrarClienteResponse()
+                    {
+                        codigo = dataRes.codigo.GetValueOrDefault(),
+                        descripcion = dataRes.descripcion
+                    };
+                }
+                else
+                {
+                    return new RegistrarClienteResponse()
+                    {
+                        codigo = 0,
+                        descripcion = "No se obtuvo respuesta del servicio de registro de cliente"
+                    };
+                }
+            }
+            catch (Exception)
+            {
+                return new RegistrarClienteResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno en el servicio de registrar cliente"
+                };
+            }
+        }
+
+        public EditarClienteResponse EditarCliente(EditarClienteRequest request, int idProveedor, int id_usuario)
+        {
+            try
+            {
+                var ctx = new MATERIALESDBEntities();
+                var dataRes = ctx.SP_EDITAR_CLIENTE(idProveedor, request.codPais, request.nombreCliente,
+                request.ruc, request.direccion, request.celular, request.correo, request.representante,
+                request.celularRepre, request.correoRepre).FirstOrDefault();
+
+                if (dataRes != null)
+                {
+                    return new EditarClienteResponse()
+                    {
+                        codigo = dataRes.codigo.GetValueOrDefault(),
+                        descripcion = dataRes.descripcion
+                    };
+                }
+                else
+                {
+                    return new EditarClienteResponse()
+                    {
+                        codigo = 0,
+                        descripcion = "No se obtuvo respuesta del servicio de editar de cliente"
+                    };
+                }
+            }
+            catch (Exception)
+            {
+                return new EditarClienteResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno en el servicio de editar cliente"
+                };
+            }
+        }
+        public EliminarClienteResponse EliminarCliente(int idProveedor, int id_usuario)
+        {
+            try
+            {
+                var ctx = new MATERIALESDBEntities();
+                var dataRes = ctx.SP_ELIMINAR_CLIENTE(idProveedor).FirstOrDefault();
+
+                if (dataRes != null)
+                {
+                    return new EliminarClienteResponse()
+                    {
+                        codigo = dataRes.codigo.GetValueOrDefault(),
+                        descripcion = dataRes.descripcion
+                    };
+                }
+                else
+                {
+                    return new EliminarClienteResponse()
+                    {
+                        codigo = 0,
+                        descripcion = "No se obtuvo respuesta del servicio de eliminar cliente"
+                    };
+                }
+            }
+            catch (Exception)
+            {
+                return new EliminarClienteResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno en el servicio de eliminar cliente"
+                };
+            }
+        }
+
+        public ObtenerDetalleClienteResponse ObtenerDetalleCliente(int idProveedor, int id_usuario)
+        {
+            try
+            {
+                var ctx = new MATERIALESDBEntities();
+                var dataRes = ctx.SP_OBTENER_DETALLE_CLIENTE(idProveedor).FirstOrDefault();
+                if (dataRes != null)
+                {
+                    var config = new MapperConfiguration(cfg => {
+                        cfg.CreateMap<SP_OBTENER_DETALLE_CLIENTE_Result, DetalleCliente>();
+                    });
+
+                    IMapper mapper = config.CreateMapper();
+                    var datosMapeados = mapper.Map<SP_OBTENER_DETALLE_CLIENTE_Result, DetalleCliente>(dataRes);
+
+                    return new ObtenerDetalleClienteResponse()
+                    {
+                        codigo = 1,
+                        descripcion = "Cliente obtenido correctamente.",
+                        datos = datosMapeados
+                    };
+                }
+                else
+                {
+                    return new ObtenerDetalleClienteResponse()
+                    {
+                        codigo = 0,
+                        descripcion = "No se obtuvieron datos de cliente."
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                return new ObtenerDetalleClienteResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno en el detalle de cliente."
                 };
             }
         }

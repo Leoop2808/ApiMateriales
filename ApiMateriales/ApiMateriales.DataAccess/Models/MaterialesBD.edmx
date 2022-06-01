@@ -48,6 +48,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="SP_EDITAR_CLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_cliente" Type="int" Mode="In" />
+          <Parameter Name="cod_pais" Type="varchar" Mode="In" />
+          <Parameter Name="nombre_cliente" Type="varchar" Mode="In" />
+          <Parameter Name="ruc" Type="varchar" Mode="In" />
+          <Parameter Name="direccion" Type="varchar" Mode="In" />
+          <Parameter Name="celular" Type="varchar" Mode="In" />
+          <Parameter Name="correo" Type="varchar" Mode="In" />
+          <Parameter Name="representante" Type="varchar" Mode="In" />
+          <Parameter Name="celular_repre" Type="varchar" Mode="In" />
+          <Parameter Name="correo_repre" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="SP_EDITAR_PROVEEDOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_proveedor" Type="int" Mode="In" />
           <Parameter Name="cod_pais" Type="varchar" Mode="In" />
@@ -60,7 +72,17 @@
           <Parameter Name="celular_repre" Type="varchar" Mode="In" />
           <Parameter Name="correo_repre" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="SP_ELIMINAR_CLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_cliente" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_ELIMINAR_PROVEEDOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_proveedor" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_OBTENER_CLIENTES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_OBTENER_DETALLE_CLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_cliente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_OBTENER_DETALLE_PROVEEDOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_proveedor" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_OBTENER_ESTADOS_PRODUCCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -70,6 +92,17 @@
         <Function Name="SP_OBTENER_PRODUCTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_OBTENER_PRODUCTO_FINAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_OBTENER_PROVEEDORES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_REGISTRAR_CLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cod_pais" Type="varchar" Mode="In" />
+          <Parameter Name="nombre_cliente" Type="varchar" Mode="In" />
+          <Parameter Name="ruc" Type="varchar" Mode="In" />
+          <Parameter Name="direccion" Type="varchar" Mode="In" />
+          <Parameter Name="celular" Type="varchar" Mode="In" />
+          <Parameter Name="correo" Type="varchar" Mode="In" />
+          <Parameter Name="representante" Type="varchar" Mode="In" />
+          <Parameter Name="celular_repre" Type="varchar" Mode="In" />
+          <Parameter Name="correo_repre" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="SP_REGISTRAR_PROVEEDOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cod_pais" Type="varchar" Mode="In" />
           <Parameter Name="nombre_proveedor" Type="varchar" Mode="In" />
@@ -178,6 +211,39 @@
           </FunctionImport>
           <FunctionImport Name="SP_OBTENER_MAESTRO_CLIENTE" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_MAESTRO_CLIENTE_Result)" />
           <FunctionImport Name="SP_OBTENER_MAESTRO_PROVEEDOR" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_MAESTRO_PROVEEDOR_Result)" />
+          <FunctionImport Name="SP_OBTENER_DETALLE_PROVEEDOR" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_DETALLE_PROVEEDOR_Result)">
+          <Parameter Name="id_proveedor" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_EDITAR_CLIENTE" ReturnType="Collection(MATERIALESDBModel.SP_EDITAR_CLIENTE_Result)">
+            <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+            <Parameter Name="cod_pais" Mode="In" Type="String" />
+            <Parameter Name="nombre_cliente" Mode="In" Type="String" />
+            <Parameter Name="ruc" Mode="In" Type="String" />
+            <Parameter Name="direccion" Mode="In" Type="String" />
+            <Parameter Name="celular" Mode="In" Type="String" />
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="representante" Mode="In" Type="String" />
+            <Parameter Name="celular_repre" Mode="In" Type="String" />
+            <Parameter Name="correo_repre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ELIMINAR_CLIENTE" ReturnType="Collection(MATERIALESDBModel.SP_ELIMINAR_CLIENTE_Result)">
+            <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_OBTENER_CLIENTES" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_CLIENTES_Result)" />
+          <FunctionImport Name="SP_OBTENER_DETALLE_CLIENTE" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_DETALLE_CLIENTE_Result)">
+            <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_REGISTRAR_CLIENTE" ReturnType="Collection(MATERIALESDBModel.SP_REGISTRAR_CLIENTE_Result)">
+            <Parameter Name="cod_pais" Mode="In" Type="String" />
+            <Parameter Name="nombre_cliente" Mode="In" Type="String" />
+            <Parameter Name="ruc" Mode="In" Type="String" />
+            <Parameter Name="direccion" Mode="In" Type="String" />
+            <Parameter Name="celular" Mode="In" Type="String" />
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="representante" Mode="In" Type="String" />
+            <Parameter Name="celular_repre" Mode="In" Type="String" />
+            <Parameter Name="correo_repre" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_OBTENER_ESTADOS_PRODUCCION_Result">
           <Property Type="String" Name="codEstadoProduccion" Nullable="true" MaxLength="20" />
@@ -225,6 +291,51 @@
         <ComplexType Name="SP_OBTENER_MAESTRO_PROVEEDOR_Result">
           <Property Type="String" Name="ruc" Nullable="true" MaxLength="25" />
           <Property Type="String" Name="nombreProveedor" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="SP_OBTENER_DETALLE_PROVEEDOR_Result">
+          <Property Type="String" Name="codPais" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="idProveedor" Nullable="false" />
+          <Property Type="String" Name="ruc" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="nombreProveedor" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="representante" Nullable="true" MaxLength="240" />
+          <Property Type="String" Name="celular" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="celularRepre" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="correoRepre" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="SP_EDITAR_CLIENTE_Result">
+          <Property Type="Int32" Name="codigo" Nullable="true" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="SP_ELIMINAR_CLIENTE_Result">
+          <Property Type="Int32" Name="codigo" Nullable="true" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="SP_OBTENER_CLIENTES_Result">
+          <Property Type="Int32" Name="idCliente" Nullable="false" />
+          <Property Type="String" Name="ruc" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="nombreCliente" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="representante" Nullable="true" MaxLength="240" />
+          <Property Type="String" Name="celular" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="SP_OBTENER_DETALLE_CLIENTE_Result">
+          <Property Type="String" Name="codPais" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="idCliente" Nullable="false" />
+          <Property Type="String" Name="ruc" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="nombreCliente" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="representante" Nullable="true" MaxLength="240" />
+          <Property Type="String" Name="celular" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="celularRepre" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="correoRepre" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="SP_REGISTRAR_CLIENTE_Result">
+          <Property Type="Int32" Name="codigo" Nullable="true" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="200" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -349,6 +460,75 @@
               <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_MAESTRO_PROVEEDOR_Result">
                 <ScalarProperty Name="ruc" ColumnName="ruc" />
                 <ScalarProperty Name="nombreProveedor" ColumnName="nombreProveedor" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_OBTENER_DETALLE_PROVEEDOR" FunctionName="MATERIALESDBModel.Store.SP_OBTENER_DETALLE_PROVEEDOR">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_DETALLE_PROVEEDOR_Result">
+                <ScalarProperty Name="codPais" ColumnName="codPais" />
+                <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
+                <ScalarProperty Name="ruc" ColumnName="ruc" />
+                <ScalarProperty Name="nombreProveedor" ColumnName="nombreProveedor" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="representante" ColumnName="representante" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="celularRepre" ColumnName="celularRepre" />
+                <ScalarProperty Name="correoRepre" ColumnName="correoRepre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_EDITAR_CLIENTE" FunctionName="MATERIALESDBModel.Store.SP_EDITAR_CLIENTE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_EDITAR_CLIENTE_Result">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ELIMINAR_CLIENTE" FunctionName="MATERIALESDBModel.Store.SP_ELIMINAR_CLIENTE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_ELIMINAR_CLIENTE_Result">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_OBTENER_CLIENTES" FunctionName="MATERIALESDBModel.Store.SP_OBTENER_CLIENTES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_CLIENTES_Result">
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="ruc" ColumnName="ruc" />
+                <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="representante" ColumnName="representante" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_OBTENER_DETALLE_CLIENTE" FunctionName="MATERIALESDBModel.Store.SP_OBTENER_DETALLE_CLIENTE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_DETALLE_CLIENTE_Result">
+                <ScalarProperty Name="codPais" ColumnName="codPais" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="ruc" ColumnName="ruc" />
+                <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="representante" ColumnName="representante" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="celularRepre" ColumnName="celularRepre" />
+                <ScalarProperty Name="correoRepre" ColumnName="correoRepre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_REGISTRAR_CLIENTE" FunctionName="MATERIALESDBModel.Store.SP_REGISTRAR_CLIENTE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_REGISTRAR_CLIENTE_Result">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -159,5 +159,123 @@ namespace ApiMateriales.DataAccess.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_MAESTRO_PROVEEDOR_Result>("SP_OBTENER_MAESTRO_PROVEEDOR");
         }
+    
+        public virtual ObjectResult<SP_OBTENER_DETALLE_PROVEEDOR_Result> SP_OBTENER_DETALLE_PROVEEDOR(Nullable<int> id_proveedor)
+        {
+            var id_proveedorParameter = id_proveedor.HasValue ?
+                new ObjectParameter("id_proveedor", id_proveedor) :
+                new ObjectParameter("id_proveedor", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_DETALLE_PROVEEDOR_Result>("SP_OBTENER_DETALLE_PROVEEDOR", id_proveedorParameter);
+        }
+    
+        public virtual ObjectResult<SP_EDITAR_CLIENTE_Result> SP_EDITAR_CLIENTE(Nullable<int> id_cliente, string cod_pais, string nombre_cliente, string ruc, string direccion, string celular, string correo, string representante, string celular_repre, string correo_repre)
+        {
+            var id_clienteParameter = id_cliente.HasValue ?
+                new ObjectParameter("id_cliente", id_cliente) :
+                new ObjectParameter("id_cliente", typeof(int));
+    
+            var cod_paisParameter = cod_pais != null ?
+                new ObjectParameter("cod_pais", cod_pais) :
+                new ObjectParameter("cod_pais", typeof(string));
+    
+            var nombre_clienteParameter = nombre_cliente != null ?
+                new ObjectParameter("nombre_cliente", nombre_cliente) :
+                new ObjectParameter("nombre_cliente", typeof(string));
+    
+            var rucParameter = ruc != null ?
+                new ObjectParameter("ruc", ruc) :
+                new ObjectParameter("ruc", typeof(string));
+    
+            var direccionParameter = direccion != null ?
+                new ObjectParameter("direccion", direccion) :
+                new ObjectParameter("direccion", typeof(string));
+    
+            var celularParameter = celular != null ?
+                new ObjectParameter("celular", celular) :
+                new ObjectParameter("celular", typeof(string));
+    
+            var correoParameter = correo != null ?
+                new ObjectParameter("correo", correo) :
+                new ObjectParameter("correo", typeof(string));
+    
+            var representanteParameter = representante != null ?
+                new ObjectParameter("representante", representante) :
+                new ObjectParameter("representante", typeof(string));
+    
+            var celular_repreParameter = celular_repre != null ?
+                new ObjectParameter("celular_repre", celular_repre) :
+                new ObjectParameter("celular_repre", typeof(string));
+    
+            var correo_repreParameter = correo_repre != null ?
+                new ObjectParameter("correo_repre", correo_repre) :
+                new ObjectParameter("correo_repre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EDITAR_CLIENTE_Result>("SP_EDITAR_CLIENTE", id_clienteParameter, cod_paisParameter, nombre_clienteParameter, rucParameter, direccionParameter, celularParameter, correoParameter, representanteParameter, celular_repreParameter, correo_repreParameter);
+        }
+    
+        public virtual ObjectResult<SP_ELIMINAR_CLIENTE_Result> SP_ELIMINAR_CLIENTE(Nullable<int> id_cliente)
+        {
+            var id_clienteParameter = id_cliente.HasValue ?
+                new ObjectParameter("id_cliente", id_cliente) :
+                new ObjectParameter("id_cliente", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ELIMINAR_CLIENTE_Result>("SP_ELIMINAR_CLIENTE", id_clienteParameter);
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_CLIENTES_Result> SP_OBTENER_CLIENTES()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_CLIENTES_Result>("SP_OBTENER_CLIENTES");
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_DETALLE_CLIENTE_Result> SP_OBTENER_DETALLE_CLIENTE(Nullable<int> id_cliente)
+        {
+            var id_clienteParameter = id_cliente.HasValue ?
+                new ObjectParameter("id_cliente", id_cliente) :
+                new ObjectParameter("id_cliente", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_DETALLE_CLIENTE_Result>("SP_OBTENER_DETALLE_CLIENTE", id_clienteParameter);
+        }
+    
+        public virtual ObjectResult<SP_REGISTRAR_CLIENTE_Result> SP_REGISTRAR_CLIENTE(string cod_pais, string nombre_cliente, string ruc, string direccion, string celular, string correo, string representante, string celular_repre, string correo_repre)
+        {
+            var cod_paisParameter = cod_pais != null ?
+                new ObjectParameter("cod_pais", cod_pais) :
+                new ObjectParameter("cod_pais", typeof(string));
+    
+            var nombre_clienteParameter = nombre_cliente != null ?
+                new ObjectParameter("nombre_cliente", nombre_cliente) :
+                new ObjectParameter("nombre_cliente", typeof(string));
+    
+            var rucParameter = ruc != null ?
+                new ObjectParameter("ruc", ruc) :
+                new ObjectParameter("ruc", typeof(string));
+    
+            var direccionParameter = direccion != null ?
+                new ObjectParameter("direccion", direccion) :
+                new ObjectParameter("direccion", typeof(string));
+    
+            var celularParameter = celular != null ?
+                new ObjectParameter("celular", celular) :
+                new ObjectParameter("celular", typeof(string));
+    
+            var correoParameter = correo != null ?
+                new ObjectParameter("correo", correo) :
+                new ObjectParameter("correo", typeof(string));
+    
+            var representanteParameter = representante != null ?
+                new ObjectParameter("representante", representante) :
+                new ObjectParameter("representante", typeof(string));
+    
+            var celular_repreParameter = celular_repre != null ?
+                new ObjectParameter("celular_repre", celular_repre) :
+                new ObjectParameter("celular_repre", typeof(string));
+    
+            var correo_repreParameter = correo_repre != null ?
+                new ObjectParameter("correo_repre", correo_repre) :
+                new ObjectParameter("correo_repre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_REGISTRAR_CLIENTE_Result>("SP_REGISTRAR_CLIENTE", cod_paisParameter, nombre_clienteParameter, rucParameter, direccionParameter, celularParameter, correoParameter, representanteParameter, celular_repreParameter, correo_repreParameter);
+        }
     }
 }

@@ -75,5 +75,95 @@ namespace ApiMateriales.Bussiness.Implementacion
                 };
             }
         }
+        public ObtenerDetalleProveedorResponse ObtenerDetalleProveedor(int idProveedor, int id_usuario) 
+        {
+            try
+            {
+                return _contactoDO.ObtenerDetalleProveedor(idProveedor, id_usuario);
+            }
+            catch (Exception e)
+            {
+                return new ObtenerDetalleProveedorResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno al obtener detalle de proveedor."
+                };
+            }
+        }
+        public ObtenerListaClientesResponse ObtenerListaClientes(int id_usuario) 
+        {
+            try
+            {
+                return _contactoDO.ObtenerListaClientes(id_usuario);
+            }
+            catch (Exception e)
+            {
+                return new ObtenerListaClientesResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno al obtener lista de clientes."
+                };
+            }
+        }
+        public RegistrarClienteResponse RegistrarCliente(RegistrarClienteRequest request, int id_usuario)
+        {
+            try
+            {
+                return _contactoDO.RegistrarCliente(request, id_usuario);
+            }
+            catch (Exception e)
+            {
+                return new RegistrarClienteResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno al registrar cliente."
+                };
+            }
+        }
+        public EditarClienteResponse EditarCliente(EditarClienteRequest request, int idCliente, int id_usuario)
+        {
+            try
+            {
+                return _contactoDO.EditarCliente(request, idCliente, id_usuario);
+            }
+            catch (Exception e)
+            {
+                return new EditarClienteResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno al editar cliente."
+                };
+            }
+        }
+        public EliminarClienteResponse EliminarCliente(int idCliente, int id_usuario)
+        {
+            try
+            {
+                return _contactoDO.EliminarCliente(idCliente, id_usuario);
+            }
+            catch (Exception e)
+            {
+                return new EliminarClienteResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno al eliminar cliente."
+                };
+            }
+        }
+        public ObtenerDetalleClienteResponse ObtenerDetalleCliente(int idCliente, int id_usuario)
+        {
+            try
+            {
+                return _contactoDO.ObtenerDetalleCliente(idCliente, id_usuario);
+            }
+            catch (Exception e)
+            {
+                return new ObtenerDetalleClienteResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno al obtener detalle de cliente."
+                };
+            }
+        }
     }
 }
