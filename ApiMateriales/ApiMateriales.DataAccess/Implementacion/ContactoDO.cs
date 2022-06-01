@@ -176,7 +176,8 @@ namespace ApiMateriales.DataAccess.Implementacion
                     return new ObtenerDetalleProveedorResponse()
                     {
                         codigo = 1,
-                        descripcion = "Proveedor obtenido correctamente."
+                        descripcion = "Proveedor obtenido correctamente.",
+                        datos = datosMapeados
                     };
                 }
                 else
@@ -184,8 +185,7 @@ namespace ApiMateriales.DataAccess.Implementacion
                     return new ObtenerDetalleProveedorResponse()
                     {
                         codigo = 0,
-                        descripcion = "No se obtuvieron datos de proveedor.",
-                        datos = new DetalleProveedor()
+                        descripcion = "No se obtuvieron datos de proveedor."
                     };
                 }
             }
