@@ -33,6 +33,7 @@ namespace ApiMateriales.Entities.Maestro.Response
         public string codProducto { get; set; }
         public string nombreProducto { get; set; }
         public int stock { get; set; }
+        public double precioUnitario { get; set; }
     }
     public class ObtenerProductoFinalResponse : GeneralResponse
     {
@@ -43,6 +44,7 @@ namespace ApiMateriales.Entities.Maestro.Response
         public string codProductoFinal { get; set; }
         public string nombreProductoFinal { get; set; }
         public int stock { get; set; }
+        public double precioUnitario { get; set; }
     }
     public class ObtenerEstadoProduccionResponse : GeneralResponse
     {

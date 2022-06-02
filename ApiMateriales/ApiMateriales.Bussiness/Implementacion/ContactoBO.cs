@@ -13,11 +13,11 @@ namespace ApiMateriales.Bussiness.Implementacion
         {
             _contactoDO = contactoDO;
         }
-        public ObtenerListaProveedoresResponse ObtenerListaProveedores(int id_usuario) 
+        public ObtenerListaProveedoresResponse ObtenerListaProveedores(string nombreProveedor, int id_usuario) 
         {
             try
             {
-                return _contactoDO.ObtenerListaProveedores(id_usuario);
+                return _contactoDO.ObtenerListaProveedores(nombreProveedor, id_usuario);
             }
             catch (Exception e)
             {
@@ -90,11 +90,11 @@ namespace ApiMateriales.Bussiness.Implementacion
                 };
             }
         }
-        public ObtenerListaClientesResponse ObtenerListaClientes(int id_usuario) 
+        public ObtenerListaClientesResponse ObtenerListaClientes(string nombreCliente, int id_usuario) 
         {
             try
             {
-                return _contactoDO.ObtenerListaClientes(id_usuario);
+                return _contactoDO.ObtenerListaClientes(nombreCliente, id_usuario);
             }
             catch (Exception e)
             {

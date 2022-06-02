@@ -20,7 +20,7 @@ namespace ApiMateriales.Controllers
         [Route("proveedor/lista-proveedores")]
         [HttpGet]
         [Authorize]
-        public IHttpActionResult ObtenerListaProveedores()
+        public IHttpActionResult ObtenerListaProveedores(string nombreProveedor)
         {
             try
             {
@@ -34,7 +34,7 @@ namespace ApiMateriales.Controllers
                     });
                 }
                 int id_usuario = Convert.ToInt32(User.Identity.GetUserId());
-                return Ok(_contactoBO.ObtenerListaProveedores(id_usuario));
+                return Ok(_contactoBO.ObtenerListaProveedores(nombreProveedor, id_usuario));
             }
             catch (Exception ex)
             {
@@ -165,7 +165,7 @@ namespace ApiMateriales.Controllers
         [Route("cliente/lista-clientes")]
         [HttpGet]
         [Authorize]
-        public IHttpActionResult ObtenerListaClientes()
+        public IHttpActionResult ObtenerListaClientes(string nombreCliente)
         {
             try
             {
@@ -179,7 +179,7 @@ namespace ApiMateriales.Controllers
                     });
                 }
                 int id_usuario = Convert.ToInt32(User.Identity.GetUserId());
-                return Ok(_contactoBO.ObtenerListaClientes(id_usuario));
+                return Ok(_contactoBO.ObtenerListaClientes(nombreCliente, id_usuario));
             }
             catch (Exception ex)
             {

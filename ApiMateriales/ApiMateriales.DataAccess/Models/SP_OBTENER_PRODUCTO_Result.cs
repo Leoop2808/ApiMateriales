@@ -16,5 +16,6 @@ namespace ApiMateriales.DataAccess.Models
         public string codProducto { get; set; }
         public string nombreProducto { get; set; }
         public Nullable<int> stock { get; set; }
+        public Nullable<decimal> precioUnitario { get; set; }
     }
 }

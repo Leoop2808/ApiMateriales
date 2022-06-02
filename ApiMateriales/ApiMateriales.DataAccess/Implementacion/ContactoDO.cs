@@ -11,12 +11,12 @@ namespace ApiMateriales.DataAccess.Implementacion
 {
     public class ContactoDO : IContactoDO
     {
-        public ObtenerListaProveedoresResponse ObtenerListaProveedores(int id_usuario) 
+        public ObtenerListaProveedoresResponse ObtenerListaProveedores(string nombreProveedor, int id_usuario) 
         {
             try
             {
                 var ctx = new MATERIALESDBEntities();
-                var dataRes = ctx.SP_OBTENER_PROVEEDORES().ToList();
+                var dataRes = ctx.SP_OBTENER_PROVEEDORES(nombreProveedor).ToList();
                 if (dataRes != null && dataRes.Count > 0)
                 {
                     var config = new MapperConfiguration(cfg => {
@@ -199,12 +199,12 @@ namespace ApiMateriales.DataAccess.Implementacion
             }
         }
 
-        public ObtenerListaClientesResponse ObtenerListaClientes(int id_usuario)
+        public ObtenerListaClientesResponse ObtenerListaClientes(string nombreCliente, int id_usuario)
         {
             try
             {
                 var ctx = new MATERIALESDBEntities();
-                var dataRes = ctx.SP_OBTENER_CLIENTES().ToList();
+                var dataRes = ctx.SP_OBTENER_CLIENTES(nombreCliente).ToList();
                 if (dataRes != null && dataRes.Count > 0)
                 {
                     var config = new MapperConfiguration(cfg => {

@@ -40,21 +40,6 @@ namespace ApiMateriales.DataAccess.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_PAIS_Result>("SP_OBTENER_PAIS");
         }
     
-        public virtual ObjectResult<SP_OBTENER_PRODUCTO_Result> SP_OBTENER_PRODUCTO()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_PRODUCTO_Result>("SP_OBTENER_PRODUCTO");
-        }
-    
-        public virtual ObjectResult<SP_OBTENER_PRODUCTO_FINAL_Result> SP_OBTENER_PRODUCTO_FINAL()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_PRODUCTO_FINAL_Result>("SP_OBTENER_PRODUCTO_FINAL");
-        }
-    
-        public virtual ObjectResult<SP_OBTENER_PROVEEDORES_Result> SP_OBTENER_PROVEEDORES()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_PROVEEDORES_Result>("SP_OBTENER_PROVEEDORES");
-        }
-    
         public virtual ObjectResult<SP_REGISTRAR_PROVEEDOR_Result> SP_REGISTRAR_PROVEEDOR(string cod_pais, string nombre_proveedor, string ruc, string direccion, string celular, string correo, string representante, string celular_repre, string correo_repre)
         {
             var cod_paisParameter = cod_pais != null ?
@@ -223,11 +208,6 @@ namespace ApiMateriales.DataAccess.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ELIMINAR_CLIENTE_Result>("SP_ELIMINAR_CLIENTE", id_clienteParameter);
         }
     
-        public virtual ObjectResult<SP_OBTENER_CLIENTES_Result> SP_OBTENER_CLIENTES()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_CLIENTES_Result>("SP_OBTENER_CLIENTES");
-        }
-    
         public virtual ObjectResult<SP_OBTENER_DETALLE_CLIENTE_Result> SP_OBTENER_DETALLE_CLIENTE(Nullable<int> id_cliente)
         {
             var id_clienteParameter = id_cliente.HasValue ?
@@ -276,6 +256,34 @@ namespace ApiMateriales.DataAccess.Models
                 new ObjectParameter("correo_repre", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_REGISTRAR_CLIENTE_Result>("SP_REGISTRAR_CLIENTE", cod_paisParameter, nombre_clienteParameter, rucParameter, direccionParameter, celularParameter, correoParameter, representanteParameter, celular_repreParameter, correo_repreParameter);
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_CLIENTES_Result> SP_OBTENER_CLIENTES(string nombreCliente)
+        {
+            var nombreClienteParameter = nombreCliente != null ?
+                new ObjectParameter("nombreCliente", nombreCliente) :
+                new ObjectParameter("nombreCliente", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_CLIENTES_Result>("SP_OBTENER_CLIENTES", nombreClienteParameter);
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_PRODUCTO_Result> SP_OBTENER_PRODUCTO()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_PRODUCTO_Result>("SP_OBTENER_PRODUCTO");
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_PRODUCTO_FINAL_Result> SP_OBTENER_PRODUCTO_FINAL()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_PRODUCTO_FINAL_Result>("SP_OBTENER_PRODUCTO_FINAL");
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_PROVEEDORES_Result> SP_OBTENER_PROVEEDORES(string nombreProveedor)
+        {
+            var nombreProveedorParameter = nombreProveedor != null ?
+                new ObjectParameter("nombreProveedor", nombreProveedor) :
+                new ObjectParameter("nombreProveedor", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_PROVEEDORES_Result>("SP_OBTENER_PROVEEDORES", nombreProveedorParameter);
         }
     }
 }
