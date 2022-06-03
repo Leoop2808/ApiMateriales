@@ -24,15 +24,6 @@ namespace ApiMateriales.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
-                {
-                    var errores = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).ToList();
-                    return Ok(new ObtenerListaProveedoresResponse()
-                    {
-                        codigo = 0,
-                        descripcion = String.Join("||", errores)
-                    });
-                }
                 int id_usuario = Convert.ToInt32(User.Identity.GetUserId());
                 return Ok(_contactoBO.ObtenerListaProveedores(nombreProveedor, id_usuario));
             }
@@ -169,15 +160,6 @@ namespace ApiMateriales.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
-                {
-                    var errores = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).ToList();
-                    return Ok(new ObtenerListaClientesResponse()
-                    {
-                        codigo = 0,
-                        descripcion = String.Join("||", errores)
-                    });
-                }
                 int id_usuario = Convert.ToInt32(User.Identity.GetUserId());
                 return Ok(_contactoBO.ObtenerListaClientes(nombreCliente, id_usuario));
             }
