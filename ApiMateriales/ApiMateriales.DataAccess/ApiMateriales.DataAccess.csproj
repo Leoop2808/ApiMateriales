@@ -104,10 +104,22 @@
     <Compile Include="Models\SP_OBTENER_DETALLE_CLIENTE_Result.cs">
       <DependentUpon>MaterialesBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SP_OBTENER_DETALLE_COMPRA_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SP_OBTENER_DETALLE_PROVEEDOR_Result.cs">
       <DependentUpon>MaterialesBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SP_OBTENER_DETALLE_VENTA_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SP_OBTENER_ESTADOS_PRODUCCION_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OBTENER_HISTORIAL_COMPRAS_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OBTENER_HISTORIAL_VENTAS_Result.cs">
       <DependentUpon>MaterialesBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_OBTENER_MAESTRO_CLIENTE_Result.cs">

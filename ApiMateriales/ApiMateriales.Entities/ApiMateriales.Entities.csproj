@@ -42,6 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compra\Request\RegistrarCompraRequest.cs" />
+    <Compile Include="Compra\Response\ObtenerDetalleCompraResponse.cs" />
+    <Compile Include="Compra\Response\ObtenerHistorialComprasResponse.cs" />
+    <Compile Include="Compra\Response\RegistrarCompraResponse.cs" />
     <Compile Include="Contacto\Request\EditarClienteRequest.cs" />
     <Compile Include="Contacto\Request\EditarProveedorRequest.cs" />
     <Compile Include="Contacto\Request\RegistrarClienteRequest.cs" />
@@ -57,14 +61,14 @@
     <Compile Include="Contacto\Response\RegistrarClienteResponse.cs" />
     <Compile Include="Contacto\Response\RegistrarProveedorResponse.cs" />
     <Compile Include="Facturacion\Request\RegistrarVentaRequest.cs" />
+    <Compile Include="Facturacion\Response\ObtenerDetalleVentaResponse.cs" />
+    <Compile Include="Facturacion\Response\ObtenerHistorialVentasResponse.cs" />
     <Compile Include="Facturacion\Response\RegistrarVentaResponse.cs" />
     <Compile Include="GeneralResponse.cs" />
     <Compile Include="Maestro\Response\ObtenerListaMaestrosResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Compra\Request\" />
-    <Folder Include="Compra\Response\" />
     <Folder Include="Maestro\Request\" />
     <Folder Include="Produccion\Request\" />
     <Folder Include="Produccion\Response\" />

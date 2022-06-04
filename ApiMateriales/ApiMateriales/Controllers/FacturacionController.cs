@@ -45,5 +45,45 @@ namespace ApiMateriales.Controllers
                 });
             }
         }
+
+        [Route("historial-ventas")]
+        [HttpGet]
+        [Authorize]
+        public IHttpActionResult ObtenerHistorialVentas(string nombreCliente)
+        {
+            try
+            {
+                int id_usuario = Convert.ToInt32(User.Identity.GetUserId());
+                return Ok(_facturacionBO.ObtenerHistorialVentas(nombreCliente, id_usuario));
+            }
+            catch (Exception ex)
+            {
+                return Ok(new ObtenerHistorialVentasResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno al obtener historial de ventas"
+                });
+            }
+        }
+
+        [Route("detalle-venta/{idVenta}")]
+        [HttpGet]
+        [Authorize]
+        public IHttpActionResult ObtenerDetalleVenta(int idVenta)
+        {
+            try
+            {
+                int id_usuario = Convert.ToInt32(User.Identity.GetUserId());
+                return Ok(_facturacionBO.ObtenerDetalleVenta(idVenta, id_usuario));
+            }
+            catch (Exception ex)
+            {
+                return Ok(new ObtenerDetalleVentaResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno al obtener detalle de venta"
+                });
+            }
+        }
     }
 }

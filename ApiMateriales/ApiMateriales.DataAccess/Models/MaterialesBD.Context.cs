@@ -285,5 +285,41 @@ namespace ApiMateriales.DataAccess.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_PROVEEDORES_Result>("SP_OBTENER_PROVEEDORES", nombreProveedorParameter);
         }
+    
+        public virtual ObjectResult<SP_OBTENER_HISTORIAL_COMPRAS_Result> SP_OBTENER_HISTORIAL_COMPRAS(string nombreProveedor)
+        {
+            var nombreProveedorParameter = nombreProveedor != null ?
+                new ObjectParameter("nombreProveedor", nombreProveedor) :
+                new ObjectParameter("nombreProveedor", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_HISTORIAL_COMPRAS_Result>("SP_OBTENER_HISTORIAL_COMPRAS", nombreProveedorParameter);
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_DETALLE_COMPRA_Result> SP_OBTENER_DETALLE_COMPRA(Nullable<int> idCompra)
+        {
+            var idCompraParameter = idCompra.HasValue ?
+                new ObjectParameter("idCompra", idCompra) :
+                new ObjectParameter("idCompra", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_DETALLE_COMPRA_Result>("SP_OBTENER_DETALLE_COMPRA", idCompraParameter);
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_DETALLE_VENTA_Result> SP_OBTENER_DETALLE_VENTA(Nullable<int> idVenta)
+        {
+            var idVentaParameter = idVenta.HasValue ?
+                new ObjectParameter("idVenta", idVenta) :
+                new ObjectParameter("idVenta", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_DETALLE_VENTA_Result>("SP_OBTENER_DETALLE_VENTA", idVentaParameter);
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_HISTORIAL_VENTAS_Result> SP_OBTENER_HISTORIAL_VENTAS(string nombreCliente)
+        {
+            var nombreClienteParameter = nombreCliente != null ?
+                new ObjectParameter("nombreCliente", nombreCliente) :
+                new ObjectParameter("nombreCliente", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_HISTORIAL_VENTAS_Result>("SP_OBTENER_HISTORIAL_VENTAS", nombreClienteParameter);
+        }
     }
 }
