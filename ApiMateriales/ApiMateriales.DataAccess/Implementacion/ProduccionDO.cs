@@ -52,7 +52,39 @@ namespace ApiMateriales.DataAccess.Implementacion
                 };
             }
         }
+        public ActualizarEstadoProduccionResponse ActualizarEstadoProduccion(ActualizarEstadoProduccionRequest request, int id_usuario) 
+        {
+            try
+            {
+                var ctx = new MATERIALESDBEntities();
+                var dataRes = ctx.SP_ACTUALIZAR_ESTADO_PRODUCCION(request.idProduccion, request.codEstadoProduccion).FirstOrDefault();
 
+                if (dataRes != null)
+                {
+                    return new ActualizarEstadoProduccionResponse()
+                    {
+                        codigo = dataRes.codigo.GetValueOrDefault(),
+                        descripcion = dataRes.descripcion
+                    };
+                }
+                else
+                {
+                    return new ActualizarEstadoProduccionResponse()
+                    {
+                        codigo = 0,
+                        descripcion = "No se obtuvo respuesta del servicio de actualizar estado de producción"
+                    };
+                }
+            }
+            catch (Exception)
+            {
+                return new ActualizarEstadoProduccionResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno en el servicio de actualizar estado de producción"
+                };
+            }
+        }
         public ObtenerInsumosPorLingoteResponse ObtenerInsumosPorLingote(ObtenerInsumosPorLingoteRequest request, int id_usuario) 
         {
             try
@@ -156,6 +188,47 @@ namespace ApiMateriales.DataAccess.Implementacion
                 {
                     codigo = -1,
                     descripcion = "Error interno en el servicio de registrar producción"
+                };
+            }
+        }
+        public ObtenerHistorialProduccionResponse ObtenerHistorialProduccion(ObtenerHistorialProduccionRequest request, int id_usuario) 
+        {
+            try
+            {
+                var ctx = new MATERIALESDBEntities();
+                var dataRes = ctx.SP_OBTENER_HISTORIAL_PRODUCCION(request.fechaDesde, request.fechaHasta, request.codProductoFinal).ToList();
+                if (dataRes != null && dataRes.Count > 0)
+                {
+                    var config = new MapperConfiguration(cfg => {
+                        cfg.CreateMap<SP_OBTENER_HISTORIAL_PRODUCCION_Result, DatosHistorialProduccion>();
+                    });
+
+                    IMapper mapper = config.CreateMapper();
+                    var datosMapeados = mapper.Map<List<SP_OBTENER_HISTORIAL_PRODUCCION_Result>, List<DatosHistorialProduccion>>(dataRes);
+
+                    return new ObtenerHistorialProduccionResponse()
+                    {
+                        codigo = 1,
+                        descripcion = "Historial de producción obtenido correctamente.",
+                        datos = datosMapeados.ToList()
+                    };
+                }
+                else
+                {
+                    return new ObtenerHistorialProduccionResponse()
+                    {
+                        codigo = 0,
+                        descripcion = "No se obtuvo el historial de producción.",
+                        datos = new List<DatosHistorialProduccion>()
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                return new ObtenerHistorialProduccionResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno al obtener historial de producción."
                 };
             }
         }

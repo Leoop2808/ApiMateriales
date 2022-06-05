@@ -59,16 +59,16 @@
     <Compile Include="Contrato\ICompraDO.cs" />
     <Compile Include="Contrato\IContactoDO.cs" />
     <Compile Include="Contrato\IFacturacionDO.cs" />
+    <Compile Include="Contrato\IInventarioDO.cs" />
     <Compile Include="Contrato\IMaestroDO.cs" />
     <Compile Include="Contrato\IProduccionDO.cs" />
-    <Compile Include="Contrato\IProductoDO.cs" />
     <Compile Include="Contrato\IReporteDO.cs" />
     <Compile Include="Implementacion\CompraDO.cs" />
     <Compile Include="Implementacion\ContactoDO.cs" />
     <Compile Include="Implementacion\FacturacionDO.cs" />
+    <Compile Include="Implementacion\InventarioDO.cs" />
     <Compile Include="Implementacion\MaestroDO.cs" />
     <Compile Include="Implementacion\ProduccionDO.cs" />
-    <Compile Include="Implementacion\ProductoDO.cs" />
     <Compile Include="Implementacion\ReporteDO.cs" />
     <Compile Include="Models\MaterialesBD.Context.cs">
       <AutoGen>True</AutoGen>
@@ -86,6 +86,12 @@
       <DependentUpon>MaterialesBD.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Providers\UsuarioIdentity.cs" />
+    <Compile Include="Models\SP_ACTUALIZAR_ESTADO_PRODUCCION_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACTUALIZAR_PRECIO_PRODUCTO_FINAL_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SP_EDITAR_CLIENTE_Result.cs">
       <DependentUpon>MaterialesBD.tt</DependentUpon>
     </Compile>
@@ -116,7 +122,16 @@
     <Compile Include="Models\SP_OBTENER_ESTADOS_PRODUCCION_Result.cs">
       <DependentUpon>MaterialesBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SP_OBTENER_FLUJO_PRODUCTO_FINAL_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OBTENER_FLUJO_PRODUCTO_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SP_OBTENER_HISTORIAL_COMPRAS_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OBTENER_HISTORIAL_PRODUCCION_Result.cs">
       <DependentUpon>MaterialesBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_OBTENER_HISTORIAL_VENTAS_Result.cs">
@@ -144,6 +159,12 @@
       <DependentUpon>MaterialesBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_OBTENER_PROVEEDORES_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OBTENER_STOCKS_PRODUCTOS_FINALES_Result.cs">
+      <DependentUpon>MaterialesBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OBTENER_STOCKS_PRODUCTOS_Result.cs">
       <DependentUpon>MaterialesBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_PREPRODUCCION_COMPROBAR_STOCK_INSUMOS_Result.cs">

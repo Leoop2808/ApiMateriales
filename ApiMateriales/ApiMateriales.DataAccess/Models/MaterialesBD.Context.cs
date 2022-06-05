@@ -385,5 +385,100 @@ namespace ApiMateriales.DataAccess.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_PRODUCCIONES_Result>("SP_OBTENER_PRODUCCIONES", codEstadoProduccionParameter, fechaDesdeParameter, fechaHastaParameter);
         }
+    
+        public virtual ObjectResult<SP_ACTUALIZAR_ESTADO_PRODUCCION_Result> SP_ACTUALIZAR_ESTADO_PRODUCCION(Nullable<int> idProduccion, string codEstadoProduccion)
+        {
+            var idProduccionParameter = idProduccion.HasValue ?
+                new ObjectParameter("idProduccion", idProduccion) :
+                new ObjectParameter("idProduccion", typeof(int));
+    
+            var codEstadoProduccionParameter = codEstadoProduccion != null ?
+                new ObjectParameter("codEstadoProduccion", codEstadoProduccion) :
+                new ObjectParameter("codEstadoProduccion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ACTUALIZAR_ESTADO_PRODUCCION_Result>("SP_ACTUALIZAR_ESTADO_PRODUCCION", idProduccionParameter, codEstadoProduccionParameter);
+        }
+    
+        public virtual ObjectResult<SP_ACTUALIZAR_PRECIO_PRODUCTO_FINAL_Result> SP_ACTUALIZAR_PRECIO_PRODUCTO_FINAL(Nullable<int> idProductoFinal, Nullable<decimal> precio)
+        {
+            var idProductoFinalParameter = idProductoFinal.HasValue ?
+                new ObjectParameter("idProductoFinal", idProductoFinal) :
+                new ObjectParameter("idProductoFinal", typeof(int));
+    
+            var precioParameter = precio.HasValue ?
+                new ObjectParameter("precio", precio) :
+                new ObjectParameter("precio", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ACTUALIZAR_PRECIO_PRODUCTO_FINAL_Result>("SP_ACTUALIZAR_PRECIO_PRODUCTO_FINAL", idProductoFinalParameter, precioParameter);
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_STOCKS_PRODUCTOS_FINALES_Result> SP_OBTENER_STOCKS_PRODUCTOS_FINALES(string codProductoFinal)
+        {
+            var codProductoFinalParameter = codProductoFinal != null ?
+                new ObjectParameter("codProductoFinal", codProductoFinal) :
+                new ObjectParameter("codProductoFinal", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_STOCKS_PRODUCTOS_FINALES_Result>("SP_OBTENER_STOCKS_PRODUCTOS_FINALES", codProductoFinalParameter);
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_FLUJO_PRODUCTO_Result> SP_OBTENER_FLUJO_PRODUCTO(string codProducto, string fechaDesde, string fechaHasta)
+        {
+            var codProductoParameter = codProducto != null ?
+                new ObjectParameter("codProducto", codProducto) :
+                new ObjectParameter("codProducto", typeof(string));
+    
+            var fechaDesdeParameter = fechaDesde != null ?
+                new ObjectParameter("fechaDesde", fechaDesde) :
+                new ObjectParameter("fechaDesde", typeof(string));
+    
+            var fechaHastaParameter = fechaHasta != null ?
+                new ObjectParameter("fechaHasta", fechaHasta) :
+                new ObjectParameter("fechaHasta", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_FLUJO_PRODUCTO_Result>("SP_OBTENER_FLUJO_PRODUCTO", codProductoParameter, fechaDesdeParameter, fechaHastaParameter);
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_FLUJO_PRODUCTO_FINAL_Result> SP_OBTENER_FLUJO_PRODUCTO_FINAL(string codProductoFinal, string fechaDesde, string fechaHasta)
+        {
+            var codProductoFinalParameter = codProductoFinal != null ?
+                new ObjectParameter("codProductoFinal", codProductoFinal) :
+                new ObjectParameter("codProductoFinal", typeof(string));
+    
+            var fechaDesdeParameter = fechaDesde != null ?
+                new ObjectParameter("fechaDesde", fechaDesde) :
+                new ObjectParameter("fechaDesde", typeof(string));
+    
+            var fechaHastaParameter = fechaHasta != null ?
+                new ObjectParameter("fechaHasta", fechaHasta) :
+                new ObjectParameter("fechaHasta", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_FLUJO_PRODUCTO_FINAL_Result>("SP_OBTENER_FLUJO_PRODUCTO_FINAL", codProductoFinalParameter, fechaDesdeParameter, fechaHastaParameter);
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_HISTORIAL_PRODUCCION_Result> SP_OBTENER_HISTORIAL_PRODUCCION(string fechaDesde, string fechaHasta, string codProductoFinal)
+        {
+            var fechaDesdeParameter = fechaDesde != null ?
+                new ObjectParameter("fechaDesde", fechaDesde) :
+                new ObjectParameter("fechaDesde", typeof(string));
+    
+            var fechaHastaParameter = fechaHasta != null ?
+                new ObjectParameter("fechaHasta", fechaHasta) :
+                new ObjectParameter("fechaHasta", typeof(string));
+    
+            var codProductoFinalParameter = codProductoFinal != null ?
+                new ObjectParameter("codProductoFinal", codProductoFinal) :
+                new ObjectParameter("codProductoFinal", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_HISTORIAL_PRODUCCION_Result>("SP_OBTENER_HISTORIAL_PRODUCCION", fechaDesdeParameter, fechaHastaParameter, codProductoFinalParameter);
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_STOCKS_PRODUCTOS_Result> SP_OBTENER_STOCKS_PRODUCTOS(string codProducto)
+        {
+            var codProductoParameter = codProducto != null ?
+                new ObjectParameter("codProducto", codProducto) :
+                new ObjectParameter("codProducto", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_STOCKS_PRODUCTOS_Result>("SP_OBTENER_STOCKS_PRODUCTOS", codProductoParameter);
+        }
     }
 }

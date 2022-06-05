@@ -28,6 +28,21 @@ namespace ApiMateriales.Bussiness.Implementacion
                 };
             }
         }
+        public ActualizarEstadoProduccionResponse ActualizarEstadoProduccion(ActualizarEstadoProduccionRequest request, int id_usuario) 
+        {
+            try
+            {
+                return _produccionDO.ActualizarEstadoProduccion(request, id_usuario);
+            }
+            catch (Exception e)
+            {
+                return new ActualizarEstadoProduccionResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno en el servicio de actualizar estado de producción."
+                };
+            }
+        }
         public ObtenerInsumosPorLingoteResponse ObtenerInsumosPorLingote(ObtenerInsumosPorLingoteRequest request, int id_usuario) 
         {
             try
@@ -70,6 +85,21 @@ namespace ApiMateriales.Bussiness.Implementacion
                 {
                     codigo = -1,
                     descripcion = "Error interno en el servicio de registro de producción."
+                };
+            }
+        }
+        public ObtenerHistorialProduccionResponse ObtenerHistorialProduccion(ObtenerHistorialProduccionRequest request, int id_usuario) 
+        {
+            try
+            {
+                return _produccionDO.ObtenerHistorialProduccion(request, id_usuario);
+            }
+            catch (Exception e)
+            {
+                return new ObtenerHistorialProduccionResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno en el servicio de obtener historial de producción."
                 };
             }
         }

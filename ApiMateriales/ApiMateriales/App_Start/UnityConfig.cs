@@ -20,7 +20,7 @@ namespace ApiMateriales
             container.RegisterType<IFacturacionBO, FacturacionBO>();
             container.RegisterType<IMaestroBO, MaestroBO>();
             container.RegisterType<IProduccionBO, ProduccionBO>();
-            container.RegisterType<IProductoBO, ProductoBO>();
+            container.RegisterType<IInventarioBO, InventarioBO>();
             container.RegisterType<IReporteBO, ReporteBO>();
             #endregion
 
@@ -30,7 +30,7 @@ namespace ApiMateriales
             container.RegisterType<IFacturacionDO, FacturacionDO>();
             container.RegisterType<IMaestroDO, MaestroDO>();
             container.RegisterType<IProduccionDO, ProduccionDO>();
-            container.RegisterType<IProductoDO, ProductoDO>();
+            container.RegisterType<IInventarioDO, InventarioDO>();
             container.RegisterType<IReporteDO, ReporteDO>();
             #endregion
 

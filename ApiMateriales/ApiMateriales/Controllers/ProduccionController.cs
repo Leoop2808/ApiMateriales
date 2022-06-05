@@ -32,7 +32,36 @@ namespace ApiMateriales.Controllers
                 return Ok(new ObtenerListaProduccionesResponse()
                 {
                     codigo = -1,
-                    descripcion = "Error interno al obtener lista de prducciones"
+                    descripcion = "Error interno al obtener lista de producciones"
+                });
+            }
+        }
+
+        [Route("actualizar-estado")]
+        [HttpPut]
+        [Authorize]
+        public IHttpActionResult ActualizarEstadoProduccion(ActualizarEstadoProduccionRequest request)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    var errores = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).ToList();
+                    return Ok(new ActualizarEstadoProduccionResponse()
+                    {
+                        codigo = 0,
+                        descripcion = String.Join("||", errores)
+                    });
+                }
+                int id_usuario = Convert.ToInt32(User.Identity.GetUserId());
+                return Ok(_produccionBO.ActualizarEstadoProduccion(request, id_usuario));
+            }
+            catch (Exception ex)
+            {
+                return Ok(new ActualizarEstadoProduccionResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno al actualizar estado de producción"
                 });
             }
         }
@@ -123,5 +152,27 @@ namespace ApiMateriales.Controllers
                 });
             }
         }
+
+        [Route("historial-produccion")]
+        [HttpGet]
+        [Authorize]
+        public IHttpActionResult ObtenerHistorialProduccion(ObtenerHistorialProduccionRequest request)
+        {
+            try
+            {
+                int id_usuario = Convert.ToInt32(User.Identity.GetUserId());
+                return Ok(_produccionBO.ObtenerHistorialProduccion(request, id_usuario));
+            }
+            catch (Exception ex)
+            {
+                return Ok(new ObtenerHistorialProduccionResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno al obtener historial de producción"
+                });
+            }
+        }
+
+
     }
 }

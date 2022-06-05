@@ -65,12 +65,26 @@
     <Compile Include="Facturacion\Response\ObtenerHistorialVentasResponse.cs" />
     <Compile Include="Facturacion\Response\RegistrarVentaResponse.cs" />
     <Compile Include="GeneralResponse.cs" />
+    <Compile Include="Inventario\Request\ActualizarPrecioProductoFinalRequest.cs" />
+    <Compile Include="Inventario\Request\ObtenerFlujoProductoFinalRequest.cs" />
+    <Compile Include="Inventario\Request\ObtenerFlujoProductoRequest.cs" />
+    <Compile Include="Inventario\Request\ObtenerStocksProductosFinalesRequest.cs" />
+    <Compile Include="Inventario\Request\ObtenerStocksProductosRequest.cs" />
+    <Compile Include="Inventario\Response\ActualizarPrecioProductoFinalResponse.cs" />
+    <Compile Include="Inventario\Response\ObtenerFlujoProductoFinalResponse.cs" />
+    <Compile Include="Inventario\Response\ObtenerFlujoProductoResponse.cs" />
+    <Compile Include="Inventario\Response\ObtenerStocksProductosFinalesResponse.cs" />
+    <Compile Include="Inventario\Response\ObtenerStocksProductosResponse.cs" />
     <Compile Include="Maestro\Response\ObtenerListaMaestrosResponse.cs" />
+    <Compile Include="Produccion\Request\ActualizarEstadoProduccionRequest.cs" />
     <Compile Include="Produccion\Request\ComprobarStockInsumosRequest.cs" />
+    <Compile Include="Produccion\Request\ObtenerHistorialProduccionRequest.cs" />
     <Compile Include="Produccion\Request\ObtenerInsumosPorLingoteRequest.cs" />
     <Compile Include="Produccion\Request\ObtenerListaProduccionesRequest.cs" />
     <Compile Include="Produccion\Request\RegistrarProduccionRequest.cs" />
+    <Compile Include="Produccion\Response\ActualizarEstadoProduccionResponse.cs" />
     <Compile Include="Produccion\Response\ComprobarStockInsumosResponse.cs" />
+    <Compile Include="Produccion\Response\ObtenerHistorialProduccionResponse.cs" />
     <Compile Include="Produccion\Response\ObtenerInsumosPorLingoteResponse.cs" />
     <Compile Include="Produccion\Response\ObtenerListaProduccionesResponse.cs" />
     <Compile Include="Produccion\Response\RegistrarProduccionResponse.cs" />
@@ -78,8 +92,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Maestro\Request\" />
-    <Folder Include="Producto\Request\" />
-    <Folder Include="Producto\Response\" />
     <Folder Include="Reporte\Request\" />
     <Folder Include="Reporte\Response\" />
   </ItemGroup>
