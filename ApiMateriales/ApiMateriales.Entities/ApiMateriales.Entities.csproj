@@ -66,12 +66,18 @@
     <Compile Include="Facturacion\Response\RegistrarVentaResponse.cs" />
     <Compile Include="GeneralResponse.cs" />
     <Compile Include="Maestro\Response\ObtenerListaMaestrosResponse.cs" />
+    <Compile Include="Produccion\Request\ComprobarStockInsumosRequest.cs" />
+    <Compile Include="Produccion\Request\ObtenerInsumosPorLingoteRequest.cs" />
+    <Compile Include="Produccion\Request\ObtenerListaProduccionesRequest.cs" />
+    <Compile Include="Produccion\Request\RegistrarProduccionRequest.cs" />
+    <Compile Include="Produccion\Response\ComprobarStockInsumosResponse.cs" />
+    <Compile Include="Produccion\Response\ObtenerInsumosPorLingoteResponse.cs" />
+    <Compile Include="Produccion\Response\ObtenerListaProduccionesResponse.cs" />
+    <Compile Include="Produccion\Response\RegistrarProduccionResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Maestro\Request\" />
-    <Folder Include="Produccion\Request\" />
-    <Folder Include="Produccion\Response\" />
     <Folder Include="Producto\Request\" />
     <Folder Include="Producto\Response\" />
     <Folder Include="Reporte\Request\" />

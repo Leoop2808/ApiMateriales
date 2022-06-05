@@ -321,5 +321,69 @@ namespace ApiMateriales.DataAccess.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_HISTORIAL_VENTAS_Result>("SP_OBTENER_HISTORIAL_VENTAS", nombreClienteParameter);
         }
+    
+        public virtual ObjectResult<SP_OBTENER_INSUMOS_POR_LINGOTE_Result> SP_OBTENER_INSUMOS_POR_LINGOTE(string codProductoFinal, Nullable<int> cantidadProduccion)
+        {
+            var codProductoFinalParameter = codProductoFinal != null ?
+                new ObjectParameter("codProductoFinal", codProductoFinal) :
+                new ObjectParameter("codProductoFinal", typeof(string));
+    
+            var cantidadProduccionParameter = cantidadProduccion.HasValue ?
+                new ObjectParameter("cantidadProduccion", cantidadProduccion) :
+                new ObjectParameter("cantidadProduccion", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_INSUMOS_POR_LINGOTE_Result>("SP_OBTENER_INSUMOS_POR_LINGOTE", codProductoFinalParameter, cantidadProduccionParameter);
+        }
+    
+        public virtual ObjectResult<SP_PREPRODUCCION_COMPROBAR_STOCK_INSUMOS_Result> SP_PREPRODUCCION_COMPROBAR_STOCK_INSUMOS(string codProductoFinal, Nullable<int> cantidadProduccion)
+        {
+            var codProductoFinalParameter = codProductoFinal != null ?
+                new ObjectParameter("codProductoFinal", codProductoFinal) :
+                new ObjectParameter("codProductoFinal", typeof(string));
+    
+            var cantidadProduccionParameter = cantidadProduccion.HasValue ?
+                new ObjectParameter("cantidadProduccion", cantidadProduccion) :
+                new ObjectParameter("cantidadProduccion", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_PREPRODUCCION_COMPROBAR_STOCK_INSUMOS_Result>("SP_PREPRODUCCION_COMPROBAR_STOCK_INSUMOS", codProductoFinalParameter, cantidadProduccionParameter);
+        }
+    
+        public virtual ObjectResult<SP_REGISTRAR_PRODUCCION_Result> SP_REGISTRAR_PRODUCCION(string codProductoFinal, Nullable<int> cantidad, string fechaInicio, string fechaComprometida)
+        {
+            var codProductoFinalParameter = codProductoFinal != null ?
+                new ObjectParameter("codProductoFinal", codProductoFinal) :
+                new ObjectParameter("codProductoFinal", typeof(string));
+    
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("cantidad", cantidad) :
+                new ObjectParameter("cantidad", typeof(int));
+    
+            var fechaInicioParameter = fechaInicio != null ?
+                new ObjectParameter("fechaInicio", fechaInicio) :
+                new ObjectParameter("fechaInicio", typeof(string));
+    
+            var fechaComprometidaParameter = fechaComprometida != null ?
+                new ObjectParameter("fechaComprometida", fechaComprometida) :
+                new ObjectParameter("fechaComprometida", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_REGISTRAR_PRODUCCION_Result>("SP_REGISTRAR_PRODUCCION", codProductoFinalParameter, cantidadParameter, fechaInicioParameter, fechaComprometidaParameter);
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_PRODUCCIONES_Result> SP_OBTENER_PRODUCCIONES(string codEstadoProduccion, string fechaDesde, string fechaHasta)
+        {
+            var codEstadoProduccionParameter = codEstadoProduccion != null ?
+                new ObjectParameter("codEstadoProduccion", codEstadoProduccion) :
+                new ObjectParameter("codEstadoProduccion", typeof(string));
+    
+            var fechaDesdeParameter = fechaDesde != null ?
+                new ObjectParameter("fechaDesde", fechaDesde) :
+                new ObjectParameter("fechaDesde", typeof(string));
+    
+            var fechaHastaParameter = fechaHasta != null ?
+                new ObjectParameter("fechaHasta", fechaHasta) :
+                new ObjectParameter("fechaHasta", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_PRODUCCIONES_Result>("SP_OBTENER_PRODUCCIONES", codEstadoProduccionParameter, fechaDesdeParameter, fechaHastaParameter);
+        }
     }
 }

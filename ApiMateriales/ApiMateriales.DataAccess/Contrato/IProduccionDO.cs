@@ -1,6 +1,13 @@
-﻿namespace ApiMateriales.DataAccess.Contrato
+﻿using ApiMateriales.Entities.Produccion.Request;
+using ApiMateriales.Entities.Produccion.Response;
+
+namespace ApiMateriales.DataAccess.Contrato
 {
     public interface IProduccionDO
     {
+        ObtenerListaProduccionesResponse ObtenerListaProducciones(ObtenerListaProduccionesRequest request, int id_usuario);
+        ObtenerInsumosPorLingoteResponse ObtenerInsumosPorLingote(ObtenerInsumosPorLingoteRequest request, int id_usuario);
+        ComprobarStockInsumosResponse ComprobarStockInsumos(ComprobarStockInsumosRequest request, int id_usuario);
+        RegistrarProduccionResponse RegistrarProduccion(RegistrarProduccionRequest request, int id_usuario);
     }
 }
