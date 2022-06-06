@@ -17,8 +17,8 @@ namespace ApiMateriales.DataAccess.Models
         public string codProductoFinal { get; set; }
         public string nombreProductoFinal { get; set; }
         public Nullable<int> cantidad { get; set; }
-        public Nullable<System.DateTime> fechaInicio { get; set; }
-        public Nullable<System.DateTime> fechaEntregaComprometida { get; set; }
+        public string fechaInicio { get; set; }
+        public string fechaEntregaComprometida { get; set; }
         public string codEstadoProduccion { get; set; }
     }
 }

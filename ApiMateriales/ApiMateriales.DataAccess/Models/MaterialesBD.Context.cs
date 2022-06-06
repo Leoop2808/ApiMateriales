@@ -135,16 +135,6 @@ namespace ApiMateriales.DataAccess.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ELIMINAR_PROVEEDOR_Result>("SP_ELIMINAR_PROVEEDOR", id_proveedorParameter);
         }
     
-        public virtual ObjectResult<SP_OBTENER_MAESTRO_CLIENTE_Result> SP_OBTENER_MAESTRO_CLIENTE()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_MAESTRO_CLIENTE_Result>("SP_OBTENER_MAESTRO_CLIENTE");
-        }
-    
-        public virtual ObjectResult<SP_OBTENER_MAESTRO_PROVEEDOR_Result> SP_OBTENER_MAESTRO_PROVEEDOR()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_MAESTRO_PROVEEDOR_Result>("SP_OBTENER_MAESTRO_PROVEEDOR");
-        }
-    
         public virtual ObjectResult<SP_OBTENER_DETALLE_PROVEEDOR_Result> SP_OBTENER_DETALLE_PROVEEDOR(Nullable<int> id_proveedor)
         {
             var id_proveedorParameter = id_proveedor.HasValue ?
@@ -322,19 +312,6 @@ namespace ApiMateriales.DataAccess.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_HISTORIAL_VENTAS_Result>("SP_OBTENER_HISTORIAL_VENTAS", nombreClienteParameter);
         }
     
-        public virtual ObjectResult<SP_OBTENER_INSUMOS_POR_LINGOTE_Result> SP_OBTENER_INSUMOS_POR_LINGOTE(string codProductoFinal, Nullable<int> cantidadProduccion)
-        {
-            var codProductoFinalParameter = codProductoFinal != null ?
-                new ObjectParameter("codProductoFinal", codProductoFinal) :
-                new ObjectParameter("codProductoFinal", typeof(string));
-    
-            var cantidadProduccionParameter = cantidadProduccion.HasValue ?
-                new ObjectParameter("cantidadProduccion", cantidadProduccion) :
-                new ObjectParameter("cantidadProduccion", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_INSUMOS_POR_LINGOTE_Result>("SP_OBTENER_INSUMOS_POR_LINGOTE", codProductoFinalParameter, cantidadProduccionParameter);
-        }
-    
         public virtual ObjectResult<SP_PREPRODUCCION_COMPROBAR_STOCK_INSUMOS_Result> SP_PREPRODUCCION_COMPROBAR_STOCK_INSUMOS(string codProductoFinal, Nullable<int> cantidadProduccion)
         {
             var codProductoFinalParameter = codProductoFinal != null ?
@@ -369,23 +346,6 @@ namespace ApiMateriales.DataAccess.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_REGISTRAR_PRODUCCION_Result>("SP_REGISTRAR_PRODUCCION", codProductoFinalParameter, cantidadParameter, fechaInicioParameter, fechaComprometidaParameter);
         }
     
-        public virtual ObjectResult<SP_OBTENER_PRODUCCIONES_Result> SP_OBTENER_PRODUCCIONES(string codEstadoProduccion, string fechaDesde, string fechaHasta)
-        {
-            var codEstadoProduccionParameter = codEstadoProduccion != null ?
-                new ObjectParameter("codEstadoProduccion", codEstadoProduccion) :
-                new ObjectParameter("codEstadoProduccion", typeof(string));
-    
-            var fechaDesdeParameter = fechaDesde != null ?
-                new ObjectParameter("fechaDesde", fechaDesde) :
-                new ObjectParameter("fechaDesde", typeof(string));
-    
-            var fechaHastaParameter = fechaHasta != null ?
-                new ObjectParameter("fechaHasta", fechaHasta) :
-                new ObjectParameter("fechaHasta", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_PRODUCCIONES_Result>("SP_OBTENER_PRODUCCIONES", codEstadoProduccionParameter, fechaDesdeParameter, fechaHastaParameter);
-        }
-    
         public virtual ObjectResult<SP_ACTUALIZAR_ESTADO_PRODUCCION_Result> SP_ACTUALIZAR_ESTADO_PRODUCCION(Nullable<int> idProduccion, string codEstadoProduccion)
         {
             var idProduccionParameter = idProduccion.HasValue ?
@@ -410,15 +370,6 @@ namespace ApiMateriales.DataAccess.Models
                 new ObjectParameter("precio", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ACTUALIZAR_PRECIO_PRODUCTO_FINAL_Result>("SP_ACTUALIZAR_PRECIO_PRODUCTO_FINAL", idProductoFinalParameter, precioParameter);
-        }
-    
-        public virtual ObjectResult<SP_OBTENER_STOCKS_PRODUCTOS_FINALES_Result> SP_OBTENER_STOCKS_PRODUCTOS_FINALES(string codProductoFinal)
-        {
-            var codProductoFinalParameter = codProductoFinal != null ?
-                new ObjectParameter("codProductoFinal", codProductoFinal) :
-                new ObjectParameter("codProductoFinal", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_STOCKS_PRODUCTOS_FINALES_Result>("SP_OBTENER_STOCKS_PRODUCTOS_FINALES", codProductoFinalParameter);
         }
     
         public virtual ObjectResult<SP_OBTENER_FLUJO_PRODUCTO_Result> SP_OBTENER_FLUJO_PRODUCTO(string codProducto, string fechaDesde, string fechaHasta)
@@ -479,6 +430,55 @@ namespace ApiMateriales.DataAccess.Models
                 new ObjectParameter("codProducto", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_STOCKS_PRODUCTOS_Result>("SP_OBTENER_STOCKS_PRODUCTOS", codProductoParameter);
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_INSUMOS_POR_LINGOTE_Result> SP_OBTENER_INSUMOS_POR_LINGOTE(string codProductoFinal, Nullable<int> cantidadProduccion)
+        {
+            var codProductoFinalParameter = codProductoFinal != null ?
+                new ObjectParameter("codProductoFinal", codProductoFinal) :
+                new ObjectParameter("codProductoFinal", typeof(string));
+    
+            var cantidadProduccionParameter = cantidadProduccion.HasValue ?
+                new ObjectParameter("cantidadProduccion", cantidadProduccion) :
+                new ObjectParameter("cantidadProduccion", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_INSUMOS_POR_LINGOTE_Result>("SP_OBTENER_INSUMOS_POR_LINGOTE", codProductoFinalParameter, cantidadProduccionParameter);
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_STOCKS_PRODUCTOS_FINALES_Result> SP_OBTENER_STOCKS_PRODUCTOS_FINALES(string codProductoFinal)
+        {
+            var codProductoFinalParameter = codProductoFinal != null ?
+                new ObjectParameter("codProductoFinal", codProductoFinal) :
+                new ObjectParameter("codProductoFinal", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_STOCKS_PRODUCTOS_FINALES_Result>("SP_OBTENER_STOCKS_PRODUCTOS_FINALES", codProductoFinalParameter);
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_PRODUCCIONES_Result> SP_OBTENER_PRODUCCIONES(string codEstadoProduccion, string fechaDesde, string fechaHasta)
+        {
+            var codEstadoProduccionParameter = codEstadoProduccion != null ?
+                new ObjectParameter("codEstadoProduccion", codEstadoProduccion) :
+                new ObjectParameter("codEstadoProduccion", typeof(string));
+    
+            var fechaDesdeParameter = fechaDesde != null ?
+                new ObjectParameter("fechaDesde", fechaDesde) :
+                new ObjectParameter("fechaDesde", typeof(string));
+    
+            var fechaHastaParameter = fechaHasta != null ?
+                new ObjectParameter("fechaHasta", fechaHasta) :
+                new ObjectParameter("fechaHasta", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_PRODUCCIONES_Result>("SP_OBTENER_PRODUCCIONES", codEstadoProduccionParameter, fechaDesdeParameter, fechaHastaParameter);
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_MAESTRO_CLIENTE_Result> SP_OBTENER_MAESTRO_CLIENTE()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_MAESTRO_CLIENTE_Result>("SP_OBTENER_MAESTRO_CLIENTE");
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_MAESTRO_PROVEEDOR_Result> SP_OBTENER_MAESTRO_PROVEEDOR()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_MAESTRO_PROVEEDOR_Result>("SP_OBTENER_MAESTRO_PROVEEDOR");
         }
     }
 }

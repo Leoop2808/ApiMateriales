@@ -270,8 +270,6 @@
           <FunctionImport Name="SP_ELIMINAR_PROVEEDOR" ReturnType="Collection(MATERIALESDBModel.SP_ELIMINAR_PROVEEDOR_Result)">
           <Parameter Name="id_proveedor" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_OBTENER_MAESTRO_CLIENTE" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_MAESTRO_CLIENTE_Result)" />
-          <FunctionImport Name="SP_OBTENER_MAESTRO_PROVEEDOR" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_MAESTRO_PROVEEDOR_Result)" />
           <FunctionImport Name="SP_OBTENER_DETALLE_PROVEEDOR" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_DETALLE_PROVEEDOR_Result)">
           <Parameter Name="id_proveedor" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -324,10 +322,6 @@
           <FunctionImport Name="SP_OBTENER_HISTORIAL_VENTAS" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_HISTORIAL_VENTAS_Result)">
           <Parameter Name="nombreCliente" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SP_OBTENER_INSUMOS_POR_LINGOTE" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_INSUMOS_POR_LINGOTE_Result)">
-            <Parameter Name="codProductoFinal" Mode="In" Type="String" />
-            <Parameter Name="cantidadProduccion" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_PREPRODUCCION_COMPROBAR_STOCK_INSUMOS" ReturnType="Collection(MATERIALESDBModel.SP_PREPRODUCCION_COMPROBAR_STOCK_INSUMOS_Result)">
             <Parameter Name="codProductoFinal" Mode="In" Type="String" />
             <Parameter Name="cantidadProduccion" Mode="In" Type="Int32" />
@@ -338,11 +332,6 @@
             <Parameter Name="fechaInicio" Mode="In" Type="String" />
             <Parameter Name="fechaComprometida" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SP_OBTENER_PRODUCCIONES" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_PRODUCCIONES_Result)">
-            <Parameter Name="codEstadoProduccion" Mode="In" Type="String" />
-            <Parameter Name="fechaDesde" Mode="In" Type="String" />
-            <Parameter Name="fechaHasta" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="SP_ACTUALIZAR_ESTADO_PRODUCCION" ReturnType="Collection(MATERIALESDBModel.SP_ACTUALIZAR_ESTADO_PRODUCCION_Result)">
             <Parameter Name="idProduccion" Mode="In" Type="Int32" />
             <Parameter Name="codEstadoProduccion" Mode="In" Type="String" />
@@ -350,9 +339,6 @@
           <FunctionImport Name="SP_ACTUALIZAR_PRECIO_PRODUCTO_FINAL" ReturnType="Collection(MATERIALESDBModel.SP_ACTUALIZAR_PRECIO_PRODUCTO_FINAL_Result)">
             <Parameter Name="idProductoFinal" Mode="In" Type="Int32" />
             <Parameter Name="precio" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="SP_OBTENER_STOCKS_PRODUCTOS_FINALES" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_STOCKS_PRODUCTOS_FINALES_Result)">
-          <Parameter Name="codProductoFinal" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_OBTENER_FLUJO_PRODUCTO" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_FLUJO_PRODUCTO_Result)">
             <Parameter Name="codProducto" Mode="In" Type="String" />
@@ -370,8 +356,22 @@
             <Parameter Name="codProductoFinal" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_OBTENER_STOCKS_PRODUCTOS" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_STOCKS_PRODUCTOS_Result)">
-            <Parameter Name="codProducto" Mode="In" Type="String" />
+          <Parameter Name="codProducto" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SP_OBTENER_INSUMOS_POR_LINGOTE" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_INSUMOS_POR_LINGOTE_Result)">
+            <Parameter Name="codProductoFinal" Mode="In" Type="String" />
+            <Parameter Name="cantidadProduccion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_OBTENER_STOCKS_PRODUCTOS_FINALES" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_STOCKS_PRODUCTOS_FINALES_Result)">
+          <Parameter Name="codProductoFinal" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_OBTENER_PRODUCCIONES" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_PRODUCCIONES_Result)">
+            <Parameter Name="codEstadoProduccion" Mode="In" Type="String" />
+            <Parameter Name="fechaDesde" Mode="In" Type="String" />
+            <Parameter Name="fechaHasta" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_OBTENER_MAESTRO_CLIENTE" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_MAESTRO_CLIENTE_Result)" />
+          <FunctionImport Name="SP_OBTENER_MAESTRO_PROVEEDOR" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_MAESTRO_PROVEEDOR_Result)" />
         </EntityContainer>
         <ComplexType Name="SP_OBTENER_ESTADOS_PRODUCCION_Result">
           <Property Type="String" Name="codEstadoProduccion" Nullable="true" MaxLength="20" />
@@ -392,14 +392,6 @@
         <ComplexType Name="SP_ELIMINAR_PROVEEDOR_Result">
           <Property Type="Int32" Name="codigo" Nullable="true" />
           <Property Type="String" Name="descripcion" Nullable="true" MaxLength="200" />
-        </ComplexType>
-        <ComplexType Name="SP_OBTENER_MAESTRO_CLIENTE_Result">
-          <Property Type="String" Name="ruc" Nullable="true" MaxLength="25" />
-          <Property Type="String" Name="nombreCliente" Nullable="true" MaxLength="250" />
-        </ComplexType>
-        <ComplexType Name="SP_OBTENER_MAESTRO_PROVEEDOR_Result">
-          <Property Type="String" Name="ruc" Nullable="true" MaxLength="25" />
-          <Property Type="String" Name="nombreProveedor" Nullable="true" MaxLength="250" />
         </ComplexType>
         <ComplexType Name="SP_OBTENER_DETALLE_PROVEEDOR_Result">
           <Property Type="String" Name="codPais" Nullable="true" MaxLength="20" />
@@ -512,12 +504,6 @@
           <Property Type="Decimal" Name="importeTotal" Nullable="true" Precision="18" Scale="6" />
           <Property Type="Decimal" Name="igv" Nullable="true" Precision="18" Scale="6" />
         </ComplexType>
-        <ComplexType Name="SP_OBTENER_INSUMOS_POR_LINGOTE_Result">
-          <Property Type="Int32" Name="idProducto" Nullable="false" />
-          <Property Type="String" Name="codProducto" Nullable="true" MaxLength="20" />
-          <Property Type="Int32" Name="cantidadNecesaria" Nullable="true" />
-          <Property Type="String" Name="nombreProductoFinal" Nullable="true" MaxLength="150" />
-        </ComplexType>
         <ComplexType Name="SP_PREPRODUCCION_COMPROBAR_STOCK_INSUMOS_Result">
           <Property Type="Int32" Name="codigo" Nullable="true" />
           <Property Type="String" Name="descripcion" Nullable="true" MaxLength="200" />
@@ -526,15 +512,6 @@
           <Property Type="Int32" Name="codigo" Nullable="true" />
           <Property Type="String" Name="descripcion" Nullable="true" MaxLength="200" />
         </ComplexType>
-        <ComplexType Name="SP_OBTENER_PRODUCCIONES_Result">
-          <Property Type="Int32" Name="idProduccion" Nullable="false" />
-          <Property Type="String" Name="codProductoFinal" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="nombreProductoFinal" Nullable="true" MaxLength="150" />
-          <Property Type="Int32" Name="cantidad" Nullable="true" />
-          <Property Type="DateTime" Name="fechaInicio" Nullable="true" Precision="23" />
-          <Property Type="DateTime" Name="fechaEntregaComprometida" Nullable="true" Precision="23" />
-          <Property Type="String" Name="codEstadoProduccion" Nullable="true" MaxLength="20" />
-        </ComplexType>
         <ComplexType Name="SP_ACTUALIZAR_ESTADO_PRODUCCION_Result">
           <Property Type="Int32" Name="codigo" Nullable="true" />
           <Property Type="String" Name="descripcion" Nullable="true" MaxLength="200" />
@@ -542,12 +519,6 @@
         <ComplexType Name="SP_ACTUALIZAR_PRECIO_PRODUCTO_FINAL_Result">
           <Property Type="Int32" Name="codigo" Nullable="true" />
           <Property Type="String" Name="descripcion" Nullable="true" MaxLength="200" />
-        </ComplexType>
-        <ComplexType Name="SP_OBTENER_STOCKS_PRODUCTOS_FINALES_Result">
-          <Property Type="Int32" Name="idProductoFinal" Nullable="false" />
-          <Property Type="String" Name="codProductoFinal" Nullable="true" MaxLength="20" />
-          <Property Type="Int32" Name="stock" Nullable="true" />
-          <Property Type="Decimal" Name="precio" Nullable="true" Precision="18" Scale="6" />
         </ComplexType>
         <ComplexType Name="SP_OBTENER_FLUJO_PRODUCTO_Result">
           <Property Type="Int32" Name="idProducto" Nullable="false" />
@@ -580,6 +551,39 @@
           <Property Type="String" Name="nombreProducto" Nullable="true" MaxLength="150" />
           <Property Type="Int32" Name="stock" Nullable="true" />
           <Property Type="Decimal" Name="precio" Nullable="true" Precision="18" Scale="6" />
+        </ComplexType>
+        <ComplexType Name="SP_OBTENER_INSUMOS_POR_LINGOTE_Result">
+          <Property Type="Int32" Name="idProducto" Nullable="false" />
+          <Property Type="String" Name="codProducto" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="nombreProducto" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="cantidadNecesaria" Nullable="true" />
+          <Property Type="String" Name="nombreProductoFinal" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="SP_OBTENER_STOCKS_PRODUCTOS_FINALES_Result">
+          <Property Type="Int32" Name="idProductoFinal" Nullable="false" />
+          <Property Type="String" Name="codProductoFinal" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="nombreProductoFinal" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="stock" Nullable="true" />
+          <Property Type="Decimal" Name="precio" Nullable="true" Precision="18" Scale="6" />
+        </ComplexType>
+        <ComplexType Name="SP_OBTENER_PRODUCCIONES_Result">
+          <Property Type="Int32" Name="idProduccion" Nullable="false" />
+          <Property Type="String" Name="codProductoFinal" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="nombreProductoFinal" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="cantidad" Nullable="true" />
+          <Property Type="String" Name="fechaInicio" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="fechaEntregaComprometida" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="codEstadoProduccion" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="SP_OBTENER_MAESTRO_CLIENTE_Result">
+          <Property Type="String" Name="codCliente" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ruc" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="nombreCliente" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="SP_OBTENER_MAESTRO_PROVEEDOR_Result">
+          <Property Type="String" Name="codProveedor" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ruc" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="nombreProveedor" Nullable="true" MaxLength="250" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -657,22 +661,6 @@
               <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_ELIMINAR_PROVEEDOR_Result">
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_OBTENER_MAESTRO_CLIENTE" FunctionName="MATERIALESDBModel.Store.SP_OBTENER_MAESTRO_CLIENTE">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_MAESTRO_CLIENTE_Result">
-                <ScalarProperty Name="ruc" ColumnName="ruc" />
-                <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_OBTENER_MAESTRO_PROVEEDOR" FunctionName="MATERIALESDBModel.Store.SP_OBTENER_MAESTRO_PROVEEDOR">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_MAESTRO_PROVEEDOR_Result">
-                <ScalarProperty Name="ruc" ColumnName="ruc" />
-                <ScalarProperty Name="nombreProveedor" ColumnName="nombreProveedor" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -839,16 +827,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_OBTENER_INSUMOS_POR_LINGOTE" FunctionName="MATERIALESDBModel.Store.SP_OBTENER_INSUMOS_POR_LINGOTE">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_INSUMOS_POR_LINGOTE_Result">
-                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
-                <ScalarProperty Name="codProducto" ColumnName="codProducto" />
-                <ScalarProperty Name="cantidadNecesaria" ColumnName="cantidadNecesaria" />
-                <ScalarProperty Name="nombreProductoFinal" ColumnName="nombreProductoFinal" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_PREPRODUCCION_COMPROBAR_STOCK_INSUMOS" FunctionName="MATERIALESDBModel.Store.SP_PREPRODUCCION_COMPROBAR_STOCK_INSUMOS">
             <ResultMapping>
               <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_PREPRODUCCION_COMPROBAR_STOCK_INSUMOS_Result">
@@ -865,19 +843,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_OBTENER_PRODUCCIONES" FunctionName="MATERIALESDBModel.Store.SP_OBTENER_PRODUCCIONES">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_PRODUCCIONES_Result">
-                <ScalarProperty Name="idProduccion" ColumnName="idProduccion" />
-                <ScalarProperty Name="codProductoFinal" ColumnName="codProductoFinal" />
-                <ScalarProperty Name="nombreProductoFinal" ColumnName="nombreProductoFinal" />
-                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
-                <ScalarProperty Name="fechaEntregaComprometida" ColumnName="fechaEntregaComprometida" />
-                <ScalarProperty Name="codEstadoProduccion" ColumnName="codEstadoProduccion" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_ACTUALIZAR_ESTADO_PRODUCCION" FunctionName="MATERIALESDBModel.Store.SP_ACTUALIZAR_ESTADO_PRODUCCION">
             <ResultMapping>
               <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_ACTUALIZAR_ESTADO_PRODUCCION_Result">
@@ -891,16 +856,6 @@
               <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_ACTUALIZAR_PRECIO_PRODUCTO_FINAL_Result">
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_OBTENER_STOCKS_PRODUCTOS_FINALES" FunctionName="MATERIALESDBModel.Store.SP_OBTENER_STOCKS_PRODUCTOS_FINALES">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_STOCKS_PRODUCTOS_FINALES_Result">
-                <ScalarProperty Name="idProductoFinal" ColumnName="idProductoFinal" />
-                <ScalarProperty Name="codProductoFinal" ColumnName="codProductoFinal" />
-                <ScalarProperty Name="stock" ColumnName="stock" />
-                <ScalarProperty Name="precio" ColumnName="precio" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -949,6 +904,59 @@
                 <ScalarProperty Name="nombreProducto" ColumnName="nombreProducto" />
                 <ScalarProperty Name="stock" ColumnName="stock" />
                 <ScalarProperty Name="precio" ColumnName="precio" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_OBTENER_INSUMOS_POR_LINGOTE" FunctionName="MATERIALESDBModel.Store.SP_OBTENER_INSUMOS_POR_LINGOTE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_INSUMOS_POR_LINGOTE_Result">
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="codProducto" ColumnName="codProducto" />
+                <ScalarProperty Name="nombreProducto" ColumnName="nombreProducto" />
+                <ScalarProperty Name="cantidadNecesaria" ColumnName="cantidadNecesaria" />
+                <ScalarProperty Name="nombreProductoFinal" ColumnName="nombreProductoFinal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_OBTENER_STOCKS_PRODUCTOS_FINALES" FunctionName="MATERIALESDBModel.Store.SP_OBTENER_STOCKS_PRODUCTOS_FINALES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_STOCKS_PRODUCTOS_FINALES_Result">
+                <ScalarProperty Name="idProductoFinal" ColumnName="idProductoFinal" />
+                <ScalarProperty Name="codProductoFinal" ColumnName="codProductoFinal" />
+                <ScalarProperty Name="nombreProductoFinal" ColumnName="nombreProductoFinal" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_OBTENER_PRODUCCIONES" FunctionName="MATERIALESDBModel.Store.SP_OBTENER_PRODUCCIONES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_PRODUCCIONES_Result">
+                <ScalarProperty Name="idProduccion" ColumnName="idProduccion" />
+                <ScalarProperty Name="codProductoFinal" ColumnName="codProductoFinal" />
+                <ScalarProperty Name="nombreProductoFinal" ColumnName="nombreProductoFinal" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+                <ScalarProperty Name="fechaEntregaComprometida" ColumnName="fechaEntregaComprometida" />
+                <ScalarProperty Name="codEstadoProduccion" ColumnName="codEstadoProduccion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_OBTENER_MAESTRO_CLIENTE" FunctionName="MATERIALESDBModel.Store.SP_OBTENER_MAESTRO_CLIENTE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_MAESTRO_CLIENTE_Result">
+                <ScalarProperty Name="codCliente" ColumnName="codCliente" />
+                <ScalarProperty Name="ruc" ColumnName="ruc" />
+                <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_OBTENER_MAESTRO_PROVEEDOR" FunctionName="MATERIALESDBModel.Store.SP_OBTENER_MAESTRO_PROVEEDOR">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_MAESTRO_PROVEEDOR_Result">
+                <ScalarProperty Name="codProveedor" ColumnName="codProveedor" />
+                <ScalarProperty Name="ruc" ColumnName="ruc" />
+                <ScalarProperty Name="nombreProveedor" ColumnName="nombreProveedor" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

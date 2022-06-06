@@ -67,7 +67,7 @@ namespace ApiMateriales.Controllers
         }
 
         [Route("insumos-lingote")]
-        [HttpGet]
+        [HttpPost]
         [Authorize]
         public IHttpActionResult ObtenerInsumosPorLingote(ObtenerInsumosPorLingoteRequest request)
         {
@@ -96,7 +96,7 @@ namespace ApiMateriales.Controllers
         }
 
         [Route("comprobar-stock-insumos")]
-        [HttpGet]
+        [HttpPost]
         [Authorize]
         public IHttpActionResult ComprobarStockInsumos(ComprobarStockInsumosRequest request)
         {
@@ -154,7 +154,7 @@ namespace ApiMateriales.Controllers
         }
 
         [Route("historial-produccion")]
-        [HttpGet]
+        [HttpPost]
         [Authorize]
         public IHttpActionResult ObtenerHistorialProduccion(ObtenerHistorialProduccionRequest request)
         {

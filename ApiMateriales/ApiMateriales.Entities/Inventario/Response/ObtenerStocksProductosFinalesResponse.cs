@@ -10,6 +10,7 @@ namespace ApiMateriales.Entities.Inventario.Response
     {
         public int idProductoFinal { get; set; }
         public string codProductoFinal { get; set; }
+        public string nombreProductoFinal { get; set; }
         public int stock { get; set; }
         public double precio { get; set; }
     }

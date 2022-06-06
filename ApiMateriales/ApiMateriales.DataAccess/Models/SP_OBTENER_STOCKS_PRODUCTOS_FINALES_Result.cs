@@ -15,6 +15,7 @@ namespace ApiMateriales.DataAccess.Models
     {
         public int idProductoFinal { get; set; }
         public string codProductoFinal { get; set; }
+        public string nombreProductoFinal { get; set; }
         public Nullable<int> stock { get; set; }
         public Nullable<decimal> precio { get; set; }
     }

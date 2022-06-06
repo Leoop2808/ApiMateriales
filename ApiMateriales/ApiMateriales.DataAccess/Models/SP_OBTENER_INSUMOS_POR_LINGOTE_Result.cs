@@ -15,6 +15,7 @@ namespace ApiMateriales.DataAccess.Models
     {
         public int idProducto { get; set; }
         public string codProducto { get; set; }
+        public string nombreProducto { get; set; }
         public Nullable<int> cantidadNecesaria { get; set; }
         public string nombreProductoFinal { get; set; }
     }

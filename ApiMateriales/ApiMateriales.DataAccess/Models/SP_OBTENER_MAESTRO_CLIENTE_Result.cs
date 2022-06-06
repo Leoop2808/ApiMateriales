@@ -13,6 +13,7 @@ namespace ApiMateriales.DataAccess.Models
     
     public partial class SP_OBTENER_MAESTRO_CLIENTE_Result
     {
+        public string codCliente { get; set; }
         public string ruc { get; set; }
         public string nombreCliente { get; set; }
     }

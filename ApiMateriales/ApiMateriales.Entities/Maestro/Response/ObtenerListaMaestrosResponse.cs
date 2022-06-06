@@ -61,6 +61,7 @@ namespace ApiMateriales.Entities.Maestro.Response
     }
     public class DataCliente
     {
+        public string codCliente { get; set; }
         public string ruc { get; set; }
         public string nombreCliente { get; set; }
     }
@@ -70,6 +71,7 @@ namespace ApiMateriales.Entities.Maestro.Response
     }
     public class DataProveedor
     {
+        public string codProveedor { get; set; }
         public string ruc { get; set; }
         public string nombreProveedor { get; set; }
     }

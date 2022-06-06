@@ -17,7 +17,7 @@ namespace ApiMateriales.Controllers
         }
 
         [Route("flujo/productos-finales")]
-        [HttpGet]
+        [HttpPost]
         [Authorize]
         public IHttpActionResult ObtenerFlujoProductoFinal(ObtenerFlujoProductoFinalRequest request)
         {
@@ -37,7 +37,7 @@ namespace ApiMateriales.Controllers
         }
 
         [Route("flujo/productos")]
-        [HttpGet]
+        [HttpPost]
         [Authorize]
         public IHttpActionResult ObtenerFlujoProducto(ObtenerFlujoProductoRequest request)
         {
@@ -77,7 +77,7 @@ namespace ApiMateriales.Controllers
         }
 
         [Route("stock/productos-finales")]
-        [HttpGet]
+        [HttpPost]
         [Authorize]
         public IHttpActionResult ObtenerStocksProductosFinales(ObtenerStocksProductosFinalesRequest request)
         {
@@ -97,7 +97,7 @@ namespace ApiMateriales.Controllers
         }
 
         [Route("stock/productos")]
-        [HttpGet]
+        [HttpPost]
         [Authorize]
         public IHttpActionResult ObtenerStocksProductos(ObtenerStocksProductosRequest request)
         {
