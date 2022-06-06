@@ -257,5 +257,87 @@ namespace ApiMateriales.DataAccess.Implementacion
                 };
             }
         }
+        public ObtenerProductosFinalesMasVendidosResponse ObtenerProductosFinalesMasVendidos(int id_usuario) 
+        {
+            try
+            {
+                var ctx = new MATERIALESDBEntities();
+                var dataRes = ctx.SP_OBTENER_PRODUCTOS_FINALES_MAS_VENDIDOS().ToList();
+                if (dataRes != null && dataRes.Count > 0)
+                {
+                    var config = new MapperConfiguration(cfg => {
+                        cfg.CreateMap<SP_OBTENER_PRODUCTOS_FINALES_MAS_VENDIDOS_Result, DatosProductoFinalMasVendido>();
+                    });
+
+                    IMapper mapper = config.CreateMapper();
+                    var datosMapeados = mapper.Map<List<SP_OBTENER_PRODUCTOS_FINALES_MAS_VENDIDOS_Result>, List<DatosProductoFinalMasVendido>>(dataRes);
+
+                    return new ObtenerProductosFinalesMasVendidosResponse()
+                    {
+                        codigo = 1,
+                        descripcion = "Productos finales mas vendidos obtenidos correctamente.",
+                        datos = datosMapeados.ToList()
+                    };
+                }
+                else
+                {
+                    return new ObtenerProductosFinalesMasVendidosResponse()
+                    {
+                        codigo = 1,
+                        descripcion = "No se obtuvieron datos de los productos finales mas vendidos.",
+                        datos = new List<DatosProductoFinalMasVendido>()
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                return new ObtenerProductosFinalesMasVendidosResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno en el listado de productos finales mas vendidos."
+                };
+            }
+        }
+        public ObtenerProductosMasCompradosResponse ObtenerProductosMasComprados(int id_usuario)
+        {
+            try
+            {
+                var ctx = new MATERIALESDBEntities();
+                var dataRes = ctx.SP_OBTENER_PRODUCTOS_MAS_COMPRADOS().ToList();
+                if (dataRes != null && dataRes.Count > 0)
+                {
+                    var config = new MapperConfiguration(cfg => {
+                        cfg.CreateMap<SP_OBTENER_PRODUCTOS_MAS_COMPRADOS_Result, DatosProductoMasComprado>();
+                    });
+
+                    IMapper mapper = config.CreateMapper();
+                    var datosMapeados = mapper.Map<List<SP_OBTENER_PRODUCTOS_MAS_COMPRADOS_Result>, List<DatosProductoMasComprado>>(dataRes);
+
+                    return new ObtenerProductosMasCompradosResponse()
+                    {
+                        codigo = 1,
+                        descripcion = "Productos mas comprados obtenidos correctamente.",
+                        datos = datosMapeados.ToList()
+                    };
+                }
+                else
+                {
+                    return new ObtenerProductosMasCompradosResponse()
+                    {
+                        codigo = 1,
+                        descripcion = "No se obtuvieron datos de productos mas comprados.",
+                        datos = new List<DatosProductoMasComprado>()
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                return new ObtenerProductosMasCompradosResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno en el listado de productos mas comprados."
+                };
+            }
+        }
     }
 }

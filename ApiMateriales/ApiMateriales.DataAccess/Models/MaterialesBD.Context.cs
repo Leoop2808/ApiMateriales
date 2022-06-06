@@ -480,5 +480,15 @@ namespace ApiMateriales.DataAccess.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_MAESTRO_PROVEEDOR_Result>("SP_OBTENER_MAESTRO_PROVEEDOR");
         }
+    
+        public virtual ObjectResult<SP_OBTENER_PRODUCTOS_FINALES_MAS_VENDIDOS_Result> SP_OBTENER_PRODUCTOS_FINALES_MAS_VENDIDOS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_PRODUCTOS_FINALES_MAS_VENDIDOS_Result>("SP_OBTENER_PRODUCTOS_FINALES_MAS_VENDIDOS");
+        }
+    
+        public virtual ObjectResult<SP_OBTENER_PRODUCTOS_MAS_COMPRADOS_Result> SP_OBTENER_PRODUCTOS_MAS_COMPRADOS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_OBTENER_PRODUCTOS_MAS_COMPRADOS_Result>("SP_OBTENER_PRODUCTOS_MAS_COMPRADOS");
+        }
     }
 }

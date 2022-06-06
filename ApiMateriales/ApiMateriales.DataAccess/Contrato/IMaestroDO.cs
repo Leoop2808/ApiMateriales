@@ -10,5 +10,7 @@ namespace ApiMateriales.DataAccess.Contrato
         ObtenerEstadoProduccionResponse ObtenerEstadoProduccion(int id_usuario);
         ObtenerClienteResponse ObtenerCliente(int id_usuario);
         ObtenerProveedorResponse ObtenerProveedor(int id_usuario);
+        ObtenerProductosFinalesMasVendidosResponse ObtenerProductosFinalesMasVendidos(int id_usuario);
+        ObtenerProductosMasCompradosResponse ObtenerProductosMasComprados(int id_usuario);
     }
 }

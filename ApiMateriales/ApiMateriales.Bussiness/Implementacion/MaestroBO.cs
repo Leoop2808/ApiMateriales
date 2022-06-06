@@ -104,5 +104,36 @@ namespace ApiMateriales.Bussiness.Implementacion
                 response.descripcion = dataProveedor.descripcion;
             }
         }
+
+        public ObtenerProductosFinalesMasVendidosResponse ObtenerProductosFinalesMasVendidos(int id_usuario) 
+        {
+            try
+            {
+                return _maestroDO.ObtenerProductosFinalesMasVendidos(id_usuario);
+            }
+            catch (Exception e)
+            {
+                return new ObtenerProductosFinalesMasVendidosResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno en el servicio de obtener productos finales mas vendidos."
+                };
+            }
+        }
+        public ObtenerProductosMasCompradosResponse ObtenerProductosMasComprados(int id_usuario) 
+        {
+            try
+            {
+                return _maestroDO.ObtenerProductosMasComprados(id_usuario);
+            }
+            catch (Exception e)
+            {
+                return new ObtenerProductosMasCompradosResponse()
+                {
+                    codigo = -1,
+                    descripcion = "Error interno en el servicio de obtener productos mas comprados."
+                };
+            }
+        }
     }
 }

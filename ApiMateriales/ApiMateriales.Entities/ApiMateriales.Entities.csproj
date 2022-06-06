@@ -76,6 +76,8 @@
     <Compile Include="Inventario\Response\ObtenerStocksProductosFinalesResponse.cs" />
     <Compile Include="Inventario\Response\ObtenerStocksProductosResponse.cs" />
     <Compile Include="Maestro\Response\ObtenerListaMaestrosResponse.cs" />
+    <Compile Include="Maestro\Response\ObtenerProductosFinalesMasVendidosResponse.cs" />
+    <Compile Include="Maestro\Response\ObtenerProductosMasCompradosResponse.cs" />
     <Compile Include="Produccion\Request\ActualizarEstadoProduccionRequest.cs" />
     <Compile Include="Produccion\Request\ComprobarStockInsumosRequest.cs" />
     <Compile Include="Produccion\Request\ObtenerHistorialProduccionRequest.cs" />

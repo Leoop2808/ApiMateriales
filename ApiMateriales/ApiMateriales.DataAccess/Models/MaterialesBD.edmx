@@ -137,6 +137,8 @@
         </Function>
         <Function Name="SP_OBTENER_PRODUCTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_OBTENER_PRODUCTO_FINAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_OBTENER_PRODUCTOS_FINALES_MAS_VENDIDOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_OBTENER_PRODUCTOS_MAS_COMPRADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_OBTENER_PROVEEDORES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombreProveedor" Type="varchar" Mode="In" />
         </Function>
@@ -372,6 +374,8 @@
           </FunctionImport>
           <FunctionImport Name="SP_OBTENER_MAESTRO_CLIENTE" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_MAESTRO_CLIENTE_Result)" />
           <FunctionImport Name="SP_OBTENER_MAESTRO_PROVEEDOR" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_MAESTRO_PROVEEDOR_Result)" />
+          <FunctionImport Name="SP_OBTENER_PRODUCTOS_FINALES_MAS_VENDIDOS" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_PRODUCTOS_FINALES_MAS_VENDIDOS_Result)" />
+          <FunctionImport Name="SP_OBTENER_PRODUCTOS_MAS_COMPRADOS" ReturnType="Collection(MATERIALESDBModel.SP_OBTENER_PRODUCTOS_MAS_COMPRADOS_Result)" />
         </EntityContainer>
         <ComplexType Name="SP_OBTENER_ESTADOS_PRODUCCION_Result">
           <Property Type="String" Name="codEstadoProduccion" Nullable="true" MaxLength="20" />
@@ -584,6 +588,14 @@
           <Property Type="String" Name="codProveedor" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="ruc" Nullable="true" MaxLength="25" />
           <Property Type="String" Name="nombreProveedor" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="SP_OBTENER_PRODUCTOS_FINALES_MAS_VENDIDOS_Result">
+          <Property Type="String" Name="nombreProductoFinal" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="cantidadVentas" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_OBTENER_PRODUCTOS_MAS_COMPRADOS_Result">
+          <Property Type="String" Name="nombreProducto" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="cantidadCompras" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -957,6 +969,22 @@
                 <ScalarProperty Name="codProveedor" ColumnName="codProveedor" />
                 <ScalarProperty Name="ruc" ColumnName="ruc" />
                 <ScalarProperty Name="nombreProveedor" ColumnName="nombreProveedor" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_OBTENER_PRODUCTOS_FINALES_MAS_VENDIDOS" FunctionName="MATERIALESDBModel.Store.SP_OBTENER_PRODUCTOS_FINALES_MAS_VENDIDOS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_PRODUCTOS_FINALES_MAS_VENDIDOS_Result">
+                <ScalarProperty Name="nombreProductoFinal" ColumnName="nombreProductoFinal" />
+                <ScalarProperty Name="cantidadVentas" ColumnName="cantidadVentas" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_OBTENER_PRODUCTOS_MAS_COMPRADOS" FunctionName="MATERIALESDBModel.Store.SP_OBTENER_PRODUCTOS_MAS_COMPRADOS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MATERIALESDBModel.SP_OBTENER_PRODUCTOS_MAS_COMPRADOS_Result">
+                <ScalarProperty Name="nombreProducto" ColumnName="nombreProducto" />
+                <ScalarProperty Name="cantidadCompras" ColumnName="cantidadCompras" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
